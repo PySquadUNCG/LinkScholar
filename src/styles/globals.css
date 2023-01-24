@@ -105,3 +105,27 @@ a {
     color-scheme: dark;
   }
 }
+
+/* Scroll bar stylings */
+::-webkit-scrollbar {
+  width: 14px;
+  height: 8px;
+  padding: 4px;
+  outline: 2px solid #bec0c2;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #bec0c2;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ffb71b;
+  border-radius: 12px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #c5c29b;
+}
