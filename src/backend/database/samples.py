@@ -1,7 +1,7 @@
 from database import*
 
 #creating a user
-#create_teacher("Allen", "McBride", "testpassword","12345678", "acmcbride@uncg.edu")
+create_student("Jacky", "Luo", "testpassword","884594913", "j_luo3@uncg.edu")
 
 # grabing all the users.
 # for user in get_all_users():
