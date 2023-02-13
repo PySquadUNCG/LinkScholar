@@ -1,7 +1,7 @@
 from mongoengine import *
 import bcrypt
 connect(
-    host="mongodb+srv://jluolbro:kennaHbrWlKSXBKH@cluster0.zbpmsb3.mongodb.net/?retryWrites=true&w=majority",
+    host="mongodb+srv://jluolbro:<password>@cluster0.zbpmsb3.mongodb.net/?retryWrites=true&w=majority",
     db="Students"
 )
 
