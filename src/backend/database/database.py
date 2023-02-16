@@ -1,5 +1,6 @@
 from mongoengine import *
 import bcrypt
+import re
 connect(
     host="mongodb+srv://jluolbro:<password>@cluster0.zbpmsb3.mongodb.net/?retryWrites=true&w=majority",
     db="Students"
@@ -30,7 +31,12 @@ def create_user(first_name, last_name, user_pass, school_id, email, is_teacher):
         email=email,
         is_teacher=is_teacher
     )
-    created_user.save()
+    if not re.match(r'^\d{9}$', school_id):
+        raise Exception("Invalid ID")
+    if "@uncg.edu" not in email:
+        raise Exception("Invalid school email")
+    else:
+        created_user.save()
 
 
 def create_student(first_name, last_name, user_pass, school_id, email):
@@ -91,31 +97,31 @@ def get_all_fields_of_study():
 #                  V
 
 
-if get_all_fields_of_study().count() == 0:
-    create_field_of_study("Machine Learning")
-    create_field_of_study("Natural Language Processing")
-    create_field_of_study("Artificial Intelligence")
-    create_field_of_study("Wireless Networks")
-    create_field_of_study("Network Security")
-    create_field_of_study("Databases")
-    create_field_of_study("Data Mining")
-    create_field_of_study("Algorithms")
-    create_field_of_study("Virtual Reality")
-    create_field_of_study("Extended Reality Interfaces")
-    create_field_of_study("Augmented Reality")
-    create_field_of_study("Human Computer Interaction")
-    create_field_of_study("Deep Learning")
-    create_field_of_study("Image Processing")
-    create_field_of_study("Computer Vision")
-    create_field_of_study("Biomedical Informatics")
-    create_field_of_study("Amorphous Computing")
-    create_field_of_study("Information Retrieval")
-    create_field_of_study("Big Data Analytics")
-    create_field_of_study("Big Data Privacy and Security")
-    create_field_of_study("Computer Security")
-    create_field_of_study("Cryptography")
-    create_field_of_study("Data Structures")
-    create_field_of_study("Stochastic Optimization")
-    create_field_of_study("Differential Privacy")
-    create_field_of_study("Graph Convolutional Network and Federated Learning")
-    create_field_of_study("Cyber-security")
+# if get_all_fields_of_study().count() == 0:
+#     create_field_of_study("Machine Learning")
+#     create_field_of_study("Natural Language Processing")
+#     create_field_of_study("Artificial Intelligence")
+#     create_field_of_study("Wireless Networks")
+#     create_field_of_study("Network Security")
+#     create_field_of_study("Databases")
+#     create_field_of_study("Data Mining")
+#     create_field_of_study("Algorithms")
+#     create_field_of_study("Virtual Reality")
+#     create_field_of_study("Extended Reality Interfaces")
+#     create_field_of_study("Augmented Reality")
+#     create_field_of_study("Human Computer Interaction")
+#     create_field_of_study("Deep Learning")
+#     create_field_of_study("Image Processing")
+#     create_field_of_study("Computer Vision")
+#     create_field_of_study("Biomedical Informatics")
+#     create_field_of_study("Amorphous Computing")
+#     create_field_of_study("Information Retrieval")
+#     create_field_of_study("Big Data Analytics")
+#     create_field_of_study("Big Data Privacy and Security")
+#     create_field_of_study("Computer Security")
+#     create_field_of_study("Cryptography")
+#     create_field_of_study("Data Structures")
+#     create_field_of_study("Stochastic Optimization")
+#     create_field_of_study("Differential Privacy")
+#     create_field_of_study("Graph Convolutional Network and Federated Learning")
+#     create_field_of_study("Cyber-security")
