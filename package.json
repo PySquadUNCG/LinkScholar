@@ -17,9 +17,18 @@
     "eslint-config-next": "13.1.5",
     "express": "^4.18.2",
     "framer-motion": "^8.5.2",
+    "fs": "^0.0.1-security",
     "mongodb": "^5.0.0",
     "next": "13.1.5",
+    "python-shell": "^5.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
+  },
+  "browser": {
+    "fs": false,
+    "net": false,
+    "child_process": false,
+    "os": false,
+    "path": false
   }
 }
