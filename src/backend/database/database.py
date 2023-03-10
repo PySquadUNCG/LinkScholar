@@ -1,8 +1,9 @@
 from mongoengine import *
 import bcrypt
-client = connect(
-    host="mongodb+srv://jluolbro:<password>.zbpmsb3.mongodb.net/?retryWrites=true&w=majority",
-    db="Test"
+import re
+connect(
+    host="mongodb+srv://jluolbro:kennaHbrWlKSXBKH@cluster0.zbpmsb3.mongodb.net/?retryWrites=true&w=majority",
+    db="Students"
 )
 
 
@@ -18,29 +19,10 @@ class User(Document):
     fields_id = ListField()
 
 
+# Necessary to create fields of study. Useless for rn
+class FieldsOfStudy(Document):
+    name = StringField(required=True)
 
-user = User(
-    first_name="Luke",
-    last_name="Brown",
-    user_pass=bcrypt.hashpw("testPassword".encode('utf-8'), bcrypt.gensalt()),
-    school_id="888319834",
-    email="lcbrown9@uncg.edu"
-)
-user.save()
-
-
-users = User.objects()
-for user in users:
-    print(
-        User.first_name,
-        User.last_name,
-        User.user_pass,
-        User.school_id,
-        User.email,
-        User.picture,
-        User.is_teacher
-    )
-=======
 
 def create_user(first_name, last_name, user_pass, school_id, email, is_teacher, is_admin):
     created_user = User(
@@ -52,25 +34,29 @@ def create_user(first_name, last_name, user_pass, school_id, email, is_teacher, 
         is_teacher=is_teacher,
         is_admin=is_admin
     )
+
     if not re.match(r'^\d{9}$', school_id):
         raise Exception("Invalid ID")
     if "@uncg.edu" not in email:
         raise Exception("Invalid school email")
+    if get_user_by_school_id(school_id).count() > 0:
+        raise Exception("User already exist (Check ID)")
     else:
         created_user.save()
 
 
 def create_student(first_name, last_name, user_pass, school_id, email):
-    create_user(first_name, last_name, user_pass, school_id, email, False)
+    create_user(first_name, last_name, user_pass, school_id, email, False, False)
 
 
 def create_teacher(first_name, last_name, user_pass, school_id, email):
-    create_user(first_name, last_name, user_pass, school_id, email, True)
+    create_user(first_name, last_name, user_pass, school_id, email, True, False)
 
 
 # Remind front end team to not leave an option available to sign up as an administrator
-def create_admin(first_name, last_name, user_pass, school_id, email):
-    create_user(first_name, last_name, user_pass, school_id, email, True)
+def create_admin(first_name, last_name, user_pass, school_id, email, is_teacher):
+    create_user(first_name, last_name, user_pass, school_id, email, is_teacher, True)
+
 
 def get_all_users():
     return User.objects()
@@ -118,6 +104,15 @@ def create_field_of_study(name):
 def get_all_fields_of_study():
     return FieldsOfStudy.objects()
 
+
+def delete_user(school_id):
+    users = get_user_by_school_id(school_id)
+    if users.count() == 1:
+        users[0].delete()
+    else:
+        raise Exception("No user found")
+
+
 # DON'T TOUCH THIS :
 #                  V
 
@@ -150,4 +145,3 @@ def get_all_fields_of_study():
 #     create_field_of_study("Differential Privacy")
 #     create_field_of_study("Graph Convolutional Network and Federated Learning")
 #     create_field_of_study("Cyber-security")
->>>>>>> Stashed changes

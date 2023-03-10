@@ -1,11 +1,12 @@
 from database import*
 
 #creating a user
-create_student("testID", "fds", "testpassword","123456789", "j_luo3@uncg.edu")
-
+# create_student("testID", "fds", "testpassword","123456789", "j_luo3@uncg.edu")
+#create_student("Luke", "Brown", "testpassword", "888319834", "lcbrown9@uncg.edu")
+delete_user("888319834")
 #Hard-coding administrator accounts
-create_admin("Jacky", "Luo", "jackyluo123","884594913", "j_luo3@uncg.edu")
-create_admin("Luke", "Brown", "lukebrown123","8883198384", "lcbrown9@uncg.edu")
+# create_admin("Jacky", "Luo", "jackyluo123","884594913", "j_luo3@uncg.edu")
+# create_admin("Luke", "Brown", "lukebrown123","8883198384", "lcbrown9@uncg.edu")
 
 # grabbing all the users.
 # for user in get_all_users():
