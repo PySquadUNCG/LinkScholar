@@ -14,11 +14,9 @@ class User(Document):
     email = StringField(required=True)
     picture = FileField(required=False)
     is_teacher = BooleanField(default=False)
-<<<<<<< Updated upstream
-=======
     is_admin = BooleanField(default=False)
     fields_id = ListField()
->>>>>>> Stashed changes
+
 
 
 user = User(
@@ -30,7 +28,7 @@ user = User(
 )
 user.save()
 
-<<<<<<< Updated upstream
+
 users = User.objects()
 for user in users:
     print(
