@@ -1,5 +1,5 @@
 def prompt(phrase):
-    print(phrase)
+    return({"TestMessage":phrase})
 
 
 prompt("Goodbye World!")

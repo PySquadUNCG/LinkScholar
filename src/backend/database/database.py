@@ -93,6 +93,9 @@ def create_field_of_study(name):
 def get_all_fields_of_study():
     return FieldsOfStudy.objects()
 
+def get_field_of_study(id):
+    return FieldsOfStudy.objects(id)
+
 # DON'T TOUCH THIS :
 #                  V
 
