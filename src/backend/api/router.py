@@ -3,6 +3,7 @@
 #Flask Imports.
 from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
+from mongoengine import QuerySet
 from htmlDoc import createResponse
 import json
 
@@ -28,6 +29,11 @@ def testImported(text):
 @app.route("/testParams")
 def testParams():
     return jsonify(request.args)
+
+@app.route("/testUserQuery/<string:name>")
+def testQuery(name):
+    print(get_user_by_first_name(name).to_json())
+    return get_user_by_first_name(name).to_json()
 
 #Format for request is "(root)/testMultiRouter/<field>?param=<param>/".
 @app.route("/testMultiRouter/<string:field>", methods=['GET'])
@@ -77,9 +83,9 @@ def getReqUser(field):
 
     try:
         if(field == "all"):
-            return createResponse(content=jsonify(getReqRouter["all"]()), status=200)
+            return createResponse(content=getReqRouter["all"]().to_json(), status=200)
         else:
-            return createResponse(content=jsonify(getReqRouter[field](str(request.args.get('param', '')))), status=200)
+            return createResponse(content=getReqRouter[field](str(request.args.get('param', ''))).to_json(), status=200)
     except TypeError:
         return createResponse(content=jsonify({"Error": "The requested data could not be fetched due to a type mismatch."}), status=500)
     except KeyError:
@@ -99,9 +105,9 @@ def getReqFieldOfStudy(field):
 
     try:
         if(field == "all"):
-            return createResponse(content=jsonify(getReqRouter["all"]()), status=200)
+            return createResponse(content=getReqRouter["all"]().to_json(), status=200)
         else:
-            return createResponse(content=jsonify(getReqRouter[field](str(request.args.get('param', '')))), status=200)
+            return createResponse(content=getReqRouter[field](str(request.args.get('param', ''))).to_json(), status=200)
     except TypeError:
         return createResponse(content=jsonify({"Error": "The requested data could not be fetched due to a type mismatch."}), status=500)
     except KeyError:

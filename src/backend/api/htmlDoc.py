@@ -4,5 +4,6 @@ def createResponse(content = "None", status = 200, corsOrigin = "http://localhos
     resp = make_response(content)
     resp.headers['Access-Control-Allow-Origin'] = corsOrigin
     resp.headers['Access-Control-Allow-Methods'] = corsHeaders
+    resp.headers['Content-Type'] = "application/json"
     resp.status = status
     return resp
