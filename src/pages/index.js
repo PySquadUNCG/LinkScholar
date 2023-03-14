@@ -15,7 +15,7 @@ export default function Home() {
   const reqHeaders = new Headers();
   reqHeaders.append("Accept", "application/json");
 
-  const { response, loaded } = LinkScholarAPI("/testMultiRouter/", "specific", ["param", "first"]);
+  const { response, loaded } = LinkScholarAPI("/api/get/user/", "firstName", ["param", "Luke"]);
 
   useEffect(() => {
     setMessage(response);
