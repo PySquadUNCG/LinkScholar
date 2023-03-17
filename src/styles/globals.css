@@ -129,3 +129,210 @@ a {
 ::-webkit-scrollbar-thumb:hover {
   background: #c5c29b;
 }
+
+/* Start Font-End CSS*/
+
+body {
+  background-color: #0f2044;
+  font-family: "Roboto", sans-serif;
+}
+
+.signup-box {
+  width: 360px;
+  height: 950px;
+  margin: auto;
+  background-color: white;
+  border-radius: 3px;
+}
+
+.icon img {
+  width: 60%;
+  margin-top: 20px;
+  margin-left: 80px;
+}
+
+.login-box {
+  width: 360px;
+  height: 400px;
+  margin: auto;
+  border-radius: 3px;
+  background-color: white;
+}
+
+.forgot-box {
+  width: 360px;
+  height: 275px;
+  margin: auto;
+  border-radius: 3px;
+  background-color: white;
+}
+
+h1 {
+  text-align: center;
+  padding-top: 15px;
+}
+
+h2 {
+  text-align: center;
+}
+
+
+h4 {
+  text-align: center;
+}
+
+form {
+  width: 300px;
+  margin-left: 20px;
+}
+
+form label {
+  display: flex;
+  margin-top: 50px;
+  font-size: 18px;
+}
+
+.labelname{
+  display: flex;
+  margin-left: 35px;
+  font-size: 18px;
+}
+.checkboxlabel{
+  display: flex;
+  font-size: 12px;
+  margin-left: 10px;
+}
+/* Controls forgotusername Required Message*/ 
+.forgoterror{
+  margin-top: 10px;
+  margin-left: 22px;
+  color: #a00c30;
+  text-decoration: solid;
+}
+/* Controls label at top of Forgot username page*/ 
+.labelname2{
+  margin-left: 45px;
+  color: black;
+  font-weight: bold;
+  font-size: 18px;
+}
+/* Controls forgotusername inputbox*/ 
+.inputbox{
+  margin-left: 22px;
+   width: 80%;
+  padding: 7px;
+  border: none;
+  border: 1px solid gray;
+  border-radius: 6px;
+  outline: none;
+}
+/*Profile page css*/
+.profile-box{
+  width: 1200px;
+  height: 1300px;
+  margin: auto;
+  border-radius: 3px;
+  background-color: white;
+
+}
+
+form input {
+  width: 100%;
+  padding: 7px;
+  border: none;
+  border: 1px solid gray;
+  border-radius: 6px;
+  outline: none;
+}
+
+/* Controls forgotusername submit buttons may need to seperate base on page*/ 
+.submitforgot {
+  display: inline-block;
+  
+  margin-left: 16px;
+  padding: 7px 0px;
+  width: 320px;
+  height: 35px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffb71b;
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+  position: relative;
+}
+
+.submit {
+  display: inline-block;
+  padding: 10px 0px;
+  width: 320px;
+  height: 35px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffb71b;
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+}
+
+.submit:hover {
+  width: 320px;
+  height: 35px;
+  margin-top: 20px;
+  border: none;
+  background-color: #a00c30;
+  color: white;
+  font-size: 1rem;
+}
+.indent{
+  margin-top: 10px;
+  margin-left: 60px;
+}
+p {
+  text-align: center;
+  padding-top: 20px;
+  font-size: 15px;
+}
+
+.para-2 {
+  text-align: center;
+  color: white;
+  font-size: 15px;
+  margin-top: -10px;
+}
+
+.para-2 a {
+  color: #49c1a2;
+}
+
+/* Add a black background color to the top navigation */
+.topnav {
+  background-color: #0f2044;
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #ffb71b;
+  color: white;
+}
