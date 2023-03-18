@@ -80,6 +80,11 @@ def get_user_by_email_no_domain(email):
     return q_set
 
 
+def get_user_by_email(email):
+    q_set = User.objects(email__startswith=email)
+    return q_set
+
+
 def get_user_by_school_id(school_id):
     q_set = User.objects(school_id=school_id)
     return q_set
