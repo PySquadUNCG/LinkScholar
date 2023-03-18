@@ -7,96 +7,58 @@ import { Alert, Box } from '@chakra-ui/react';
 import { useColorMode, Button } from "@chakra-ui/react"
 
 const SignInPage = () => {
-  /*const handleSubmit = async (event) => {
-    event.preventDefault()
 
-    const data = {
-      first: event.target.first.value,
-      last: event.target.last.value,
-      email: event.target.email.value,
-      studentId: event.target.studentId.value,
-      password: event.target.password.value,
-      confpassword: event.target.confpassword
-    }
-    function checkPassword(form) {
-      password1 = form.password.value;
-      password2 = form.confpassword.value;
+  const [successMessage, setSuccessMessage] = useState('');
 
-      if (password == '')
-        alert("Please enter a Password")
-
-      else if (confpassword == '')
-        alert("Please enter Password in 'confirm password'")
-
-      else if (password != confpassword) {
-        alert("\n Passwords do not match: Please re-enter.");
-        return false;
-      }
-      else {
-        alert("Welcome to LinkScholar!")
-        return true;
-      }
-
-    }
-  }
-  */
-  function MyComponent() {
-    const { colorMode, toggleColorMode } = useColorMode()
-    return (
-      <div>
-        <h1>My Component</h1>
-        <Button onClick={toggleColorMode}>
-          Toggle {colorMode === "light" ? "Dark" : "Light"} Mode
-        </Button>
-      </div>
-    )
-  }
-  const [isChecked, setIsChecked] = useState(false);
-
-  const handleCheckboxChange = () => {
-    setIsChecked(!isChecked);
-  }; 
- 
   const [formData, setFormData] = useState({
-      firstName: '',
-      lastName: '',
-      email: '',
-      studentId: undefined,
-      password: undefined,
-      confPassword: undefined,
+    firstName: '',
+    lastName: '',
+    email: '',
+    studentId: '',
+    password: '',
+    confPassword: '',
 
 
-  
-      
-    });
-    const [formFilled, setFormFilled] = useState(false);
-  
-    
-    
-  
-    const handleInputChange = (event) => {
-      const { name, value } = event.target;
-      setFormData((prevFormData) => ({
-        ...prevFormData,
-        [name]: value,
-      }));
-    };
-  
-    const handleSubmit = (event) => {
-      event.preventDefault();
+
+
+  });
+  const [formFilled, setFormFilled] = useState(false);
+
+
+
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (event) => {
+   
+
+    if (formData.password === formData.confPassword) {
       console.log('Form submitted:', formData);
-    };
-  
-    // Check if all form inputs have a value
-    
-    useEffect(() => {
-      if(password==confPassword){
+      event.preventDefault();
+      setSuccessMessage('Your form has been submitted successfully!');
+    } else {
+      console.error('Passwords do not match: Try Again!'); 
+      
+    }
+  };
+
+  // Check if all form inputs have a value
+
+  useEffect(() => {
+    if (formData.password === formData.confPassword) {
       const isFormFilled = Object.values(formData).every((value) => value !== '');
       setFormFilled(isFormFilled);
-    }else{console.error('Passwords do not match: Try Again!')}
-    }, [formData]);
-    
-  
+    } else { 
+      console.error('Passwords do not match: Try Again!') }
+  }, [formData]);
+
+
   return (
 
     <>
@@ -114,23 +76,24 @@ const SignInPage = () => {
         <div class="signup-box">
           <h1>Welcome To LinkScholar!</h1>
           <h2>Sign up</h2>
+      
           <form onSubmit={handleSubmit}>
             <label>First Name</label>
-            <input type="text" id='first' name = "firstName" value={formData.firstName} onChange = {handleInputChange} required />
+            <input type="text" id='first' name="firstName" value={formData.firstName} onChange={handleInputChange} required />
             <label>Last Name</label>
-            <input type="text" id='last' name = "lastName" value={formData.lastName} onChange = {handleInputChange} required />
+            <input type="text" id='last' name="lastName" value={formData.lastName} onChange={handleInputChange} required />
             <label>Email</label>
-            <input type="text" id='email' name="email" value={formData.email} onChange = {handleInputChange} required />
+            <input type="text" id='email' name="email" value={formData.email} onChange={handleInputChange} required />
             <label>Student ID</label>
-            <input type="number" id='studentId' value={formData.studentId} onChange = {handleInputChange} minLength={9} maxLength={9} required />
+            <input type="number" id='studentId' name="studentId" value={formData.studentId} onChange={handleInputChange} minLength={9} maxLength={9} required />
             <label>Password</label>
-            <input type="password" id='password' pattern='{7,25}' value={formData.password} onChange = {handleInputChange} required />
+            <input type="password" id='password' name="password" pattern='{7,25}' value={formData.password} onChange={handleInputChange} required />
             <label>Confirm Password</label>
-            <input type="password" id='confpassword' pattern='{7,25}' value = {formData.confPassword} onChange={handleInputChange} placeholder='' required />
+            <input type="password" id='confpassword' name="confPassword" pattern='{7,25}' value={formData.confPassword} onChange={handleInputChange} required />
             {/*<label className='checkboxlabel'>  Is this a Teacher Account?<input type="checkbox" checked={isChecked} onChange={handleCheckboxChange} /></label>*/}
 
             <Link href="/login">
-              <button className= 'submit' type = "submit" disabled={!formFilled} > Login </button>
+              <button className='submit' type="submit" disabled={!formFilled} > Sign Up </button>
             </Link>
 
           </form>
