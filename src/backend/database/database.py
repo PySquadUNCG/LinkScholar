@@ -113,35 +113,17 @@ def delete_user(school_id):
         raise Exception("No user found")
 
 
-# DON'T TOUCH THIS :
-#                  V
+if get_all_fields_of_study().count() == 0:
+    create_field_of_study("Algorithms and Theory of Computing")
+    create_field_of_study("Data Science and Machine Learning")
+    create_field_of_study("Database Systems")
+    create_field_of_study("Extended Reality")
+    create_field_of_study("Image Processing")
+    create_field_of_study("Networking")
+    create_field_of_study("Online Social Networks")
+    create_field_of_study("Security and Cryptography")
 
 
-# if get_all_fields_of_study().count() == 0:
-#     create_field_of_study("Machine Learning")
-#     create_field_of_study("Natural Language Processing")
-#     create_field_of_study("Artificial Intelligence")
-#     create_field_of_study("Wireless Networks")
-#     create_field_of_study("Network Security")
-#     create_field_of_study("Databases")
-#     create_field_of_study("Data Mining")
-#     create_field_of_study("Algorithms")
-#     create_field_of_study("Virtual Reality")
-#     create_field_of_study("Extended Reality Interfaces")
-#     create_field_of_study("Augmented Reality")
-#     create_field_of_study("Human Computer Interaction")
-#     create_field_of_study("Deep Learning")
-#     create_field_of_study("Image Processing")
-#     create_field_of_study("Computer Vision")
-#     create_field_of_study("Biomedical Informatics")
-#     create_field_of_study("Amorphous Computing")
-#     create_field_of_study("Information Retrieval")
-#     create_field_of_study("Big Data Analytics")
-#     create_field_of_study("Big Data Privacy and Security")
-#     create_field_of_study("Computer Security")
-#     create_field_of_study("Cryptography")
-#     create_field_of_study("Data Structures")
-#     create_field_of_study("Stochastic Optimization")
-#     create_field_of_study("Differential Privacy")
-#     create_field_of_study("Graph Convolutional Network and Federated Learning")
-#     create_field_of_study("Cyber-security")
+
+
+
