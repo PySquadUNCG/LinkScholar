@@ -41,6 +41,8 @@ def create_user(first_name, last_name, user_pass, school_id, email, is_teacher, 
         raise Exception("Invalid school email")
     if get_user_by_school_id(school_id).count() > 0:
         raise Exception("User already exist (Check ID)")
+    if get_user_by_email(email).count() > 0:
+        raise Exception("User already exist (Check Email)")
     else:
         created_user.save()
 
@@ -90,11 +92,27 @@ def get_user_by_school_id(school_id):
     return q_set
 
 
+# def change_password(email, new_password):
+#     users = get_user_by_email_no_domain(email)
+#     if users.count() == 1:
+#         users[0].user_pass = bcrypt.hashpw(new_password.encode('utf-8'), bcrypt.gensalt())
+#         users[0].save()
+#     else:
+#         raise Exception("No unique user found")
+
 def change_password(email, new_password):
-    users = get_user_by_email_no_domain(email)
+    users = get_user_by_email(email)
     if users.count() == 1:
-        users[0].user_pass = bcrypt.hashpw(new_password.encode('utf-8'), bcrypt.gensalt())
-        users[0].save()
+        temp = str(bcrypt.hashpw(new_password.encode('utf-8'), bcrypt.gensalt()), 'utf-8')
+        users[0].update(user_pass=temp)
+    else:
+        raise Exception("No unique user found")
+
+
+def compare_password(email, user_pass):
+    users = get_user_by_email(email)
+    if users.count() == 1:
+        return bcrypt.checkpw(user_pass.encode('utf-8'), users[0].user_pass.encode('utf-8'))
     else:
         raise Exception("No unique user found")
 
