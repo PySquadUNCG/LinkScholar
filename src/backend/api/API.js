@@ -1,18 +1,29 @@
 import { useEffect, useState } from 'react'
 
-export default function LinkScholarAPI(path, field, params = [], restMethod = "GET", docType = "application/json", trigger = []) {
+export default function LinkScholarAPI(path, field, params = {}, restMethod = "GET", docType = "application/json", trigger = []) {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const url = ConstructUrl(path, field, params);
+        const { url, content } = ConstructURL(path, field, params, restMethod);
+        if (url === "") {
+            return {
+                response: content,
+                loading: false
+            }
+        }
 
         const reqHeaders = new Headers();
         reqHeaders.append("Accept", docType);
 
+        if (restMethod === "POST") {
+            reqHeaders.append("Content-Type", docType);
+        }
+
         const options = {
             method: restMethod,
             headers: reqHeaders,
+            body: content,
             mode: "cors"
         }
 
@@ -32,30 +43,61 @@ export default function LinkScholarAPI(path, field, params = [], restMethod = "G
 }
 
 /**
- * Constructs a url for an API call. 
+ * Constructs a url for a GET API call. 
  * @param {string} path Root URL. Must end in "/".
  * @param {string} field Field Value. Does not end in "/"
  * @param {string[]} params Params if they exist.
  */
-export function ConstructUrl(path, field = "", params = []) {
+export function ConstructGetURL(path, field = "", params = {}) {
     let url = "http://localhost:5000";
     url += path + field;
 
-    if (params.length > 0) {
+    const content = null;
+
+    if (Object.keys(params).length > 0) {
         url += "?";
-        params.map((param, idx) => {
-            url += param;
+        for (let idx = 0; idx < Object.keys(params).length; idx++) {
+            url += Object.keys(params)[idx] + "=" + params[Object.keys(params)[idx]];
 
-            if (idx % 2 === 0) {
-                url += "=";
-            }
-
-            if ((idx % 2 !== 0) & (idx < params.length - 1)) {
+            if ((idx < Object.keys(params).length - 1)) {
                 url += "&";
             }
-        })
+        }
     }
 
-    console.log(url);
-    return url;
+    return { url, content };
+}
+
+/**
+ * Constructs a url for a POST API call. 
+ * @param {string} path Root URL. Must end in "/".
+ * @param {string} field Field Value. Does not end in "/"
+ * @param {string[]} params Params if they exist.
+ */
+export function ConstructPostURL(path, field = "", params = {}) {
+    const url = "http://localhost:5000" + path + field;
+
+    const content = JSON.stringify(params);
+
+    return { url, content };
+}
+
+/**
+ * Constructs a url for an API call. 
+ * @param {string} path Root URL. Must end in "/".
+ * @param {string} field Field Value. Does not end in "/"
+ * @param {string[]} params Params if they exist.
+ * @param {string} method Request Method.
+ */
+export function ConstructURL(path, field = "", params = {}, method = "GET") {
+    if (method === "GET") {
+        return ConstructGetURL(path, field, params);
+    } else if (method === "POST") {
+        return ConstructPostURL(path, field, params);
+    } else {
+        return {
+            url: "",
+            content: JSON.stringify({ ERROR: "BAD REQUEST" })
+        }
+    }
 }
