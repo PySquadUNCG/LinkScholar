@@ -5,7 +5,6 @@ import Head from 'next/head'
 import styled from 'styled-components';
 import { Alert, Box } from '@chakra-ui/react';
 import { useColorMode, Button } from "@chakra-ui/react"
-
 const SignInPage = () => {
 
   const [successMessage, setSuccessMessage] = useState('');
@@ -100,11 +99,11 @@ const SignInPage = () => {
           <p>
             By clicking the Sign Up button,you agree to our <br />
             <a href="#">Terms and Condition</a> and <a href="#">Policy Privacy</a>
-          </p>
-        </div>
-        <p class="para-2">
-          Already have an account? <Link href="/login">Sign Up</Link>
+          </p><p class="para-2">
+         <a>Already have an account? <Link href="/login">Login</Link></a> 
         </p>
+        </div>
+        
       </body>
 
     </>

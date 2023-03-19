@@ -63,10 +63,11 @@ const LogInPage = () => {
       <form onSubmit={handleSubmit}>
         <label>Email</label>
         <input type="email" id = "email" name = "email" value = {formData.email} onChange={handleInputChangelog}  required />
+
         <label>Password</label>
         <input type="password" id = "password" name = "password" value={formData.password} onChange={handleInputChangelog} required  />
         <Link href="/homepage">
-        <button className='submit' type="submit" disabled={!formFilled} > Sign Up </button>
+        <button className='submit' type="submit" disabled={!formFilled} > Login </button>
             </Link>
 
       </form>

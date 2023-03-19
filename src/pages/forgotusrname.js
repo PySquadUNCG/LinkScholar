@@ -3,7 +3,6 @@ import Link from 'next/link';
 import Image from "next/image";
 import Head from 'next/head'
 import {
-    Button,
     Container,
     FormControl,
     FormErrorMessage,
@@ -14,7 +13,7 @@ import {
     Textarea,
     useToast,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const initValues = { name: "", email: "", subject: "", message: "" };
 
@@ -30,16 +29,8 @@ function Forgot() {
     const onBlur = ({ target }) =>
         setTouched((prev) => ({ ...prev, [target.name]: true }));
 
-    const handleChange = ({ target }) =>
-        setState((prev) => ({
-            ...prev,
-            values: {
-                ...prev.values,
-                [target.name]: target.value,
-            },
-        }));
 
-    const onSubmit = async () => {
+    {/*const onSubmit = async () => {
         setState((prev) => ({
             ...prev,
             isLoading: true,
@@ -61,7 +52,50 @@ function Forgot() {
                 error: error.message,
             }));
         }
-    };
+    };*/}
+    const [formData, setFormData] = useState({
+        email: '',
+
+    
+    
+    
+    
+      });
+      const [formFilled, setFormFilled] = useState(false);
+    
+    
+    
+    
+      const handleInputChangeForgot = (event) => {
+        const { name, value } = event.target;
+        setFormData((prevFormData) => ({
+          ...prevFormData,
+          [name]: value,
+        }));
+      };
+    
+      const handleSubmit = (event) => {
+       
+    
+        if (formData.password === formData.confPassword) {
+          console.log('Form submitted:', formData);
+          event.preventDefault();
+          setSuccessMessage('Your form has been submitted successfully!');
+        } else {
+          console.error('Passwords do not match: Try Again!'); 
+          
+        }
+      };
+    
+      // Check if all form inputs have a value
+    
+      useEffect(() => {
+        if (formData.password === formData.confPassword) {
+          const isFormFilled = Object.values(formData).every((value) => value !== '');
+          setFormFilled(isFormFilled);
+        } else { 
+          console.error('Passwords do not match: Try Again!') }
+      }, [formData]);
 
 
     return (
@@ -85,21 +119,23 @@ function Forgot() {
                     </div>
                     <div class="icon"><img src="/LinkScholar.png" alt="My Image" />
                     </div>
-                    <FormControl isRequired isInvalid={touched.name && !values.name} mb={5}>
-                        <FormLabel className='labelname'>Enter Username or Email</FormLabel>
+                    <FormControl isRequired isInvalid={touched.name && !values.name} mb={5} onChange={handleSubmit}>
+                        <FormLabel className='labelname'>Enter Email</FormLabel>
                         <Input className='inputbox'
                             type="text"
-                            name="name"
+                            name="email"
+                            id = "email"
                             errorBorderColor="red.300"
-                            value={values.name}
-                            onChange={handleChange}
+                            value={formData.email}
+                            onChange={handleInputChangeForgot}
                             onBlur={onBlur}
                         />
-                        <FormErrorMessage className='forgoterror'>Required</FormErrorMessage>
-                    </FormControl>
-                    <Link type="submit" href="/login">
-                        <a className='submitforgot'>Login</a>
+                        <FormErrorMessage className='forgoterror'>Required</FormErrorMessage> 
+                        <Link href="/login">
+                        <button className='submit' type="submit" disabled={!formFilled}> Confirm </button>
                     </Link>
+                    </FormControl>
+                   
 
 
                 </div>
