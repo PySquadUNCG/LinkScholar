@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect,useState } from 'react'
 import Link from 'next/link';
 import Head from 'next/head'
 import styled from 'styled-components';
@@ -6,14 +6,42 @@ import { Box } from '@chakra-ui/react';
 import Image from "next/image";
 
 const LogInPage = () => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log('Email:', email)
-    console.log('Password:', password)
-  }
+  });
+  const [formFilled, setFormFilled] = useState(false);
+
+
+
+
+  const handleInputChangelog = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (event) => {
+   
+      console.log('Form submitted:', formData);
+      event.preventDefault();
+  
+  };
+
+
+
+ // Check if all form inputs have a value
+  useEffect(() => {
+ 
+      const isFormFilled = Object.values(formData).every((value) => value !== '');
+      setFormFilled(isFormFilled);
+   
+     
+  }, [formData]);
+  
 
   return (
 
@@ -32,13 +60,13 @@ const LogInPage = () => {
     <div class="login-box">
       <div class = "icon"><img src="/LinkScholar.png" alt="My Image" />
 </div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label>Email</label>
-        <input type="email" placeholder="" />
+        <input type="email" id = "email" name = "email" value = {formData.email} onChange={handleInputChangelog}  required />
         <label>Password</label>
-        <input type="password" placeholder="" />
+        <input type="password" id = "password" name = "password" value={formData.password} onChange={handleInputChangelog} required  />
         <Link href="/homepage">
-            <a className='submit'>Login</a>
+        <button className='submit' type="submit" disabled={!formFilled} > Sign Up </button>
             </Link>
 
       </form>
