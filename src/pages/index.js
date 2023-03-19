@@ -6,6 +6,7 @@ import styles from '@/styles/Home.module.css'
 import API from '@/backend/api/API'
 import { useEffect, useState } from 'react'
 import LinkScholarAPI from '@/backend/api/API'
+import Link from 'next/link';
 
 {/*const inter = Inter({ subsets: ['latin'] })
 
