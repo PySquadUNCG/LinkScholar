@@ -288,6 +288,31 @@ form input {
   color: white;
   font-size: 1rem;
 }
+
+.submitconfirm {
+  display: inline-block;
+  padding: 15px 0px;
+  width: 320px;
+  height: 35px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffb71b;
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+}
+
+.submitconfirm:hover {
+  width: 320px;
+  height: 35px;
+  margin-top: 20px;
+  border: none;
+  background-color: #a00c30;
+  color: white;
+  font-size: 1rem;
+}
 .indent{
   margin-top: 10px;
   margin-left: 60px;
