@@ -19,6 +19,9 @@ from database import*
 # change_password("lcbrown9@uncg.edu", "newpassword2")
 # compare_password("lcbrown9@uncg.edu", "newpassword3")
 
+# Testing Fields
+get_pretend_teachers_fields_of_study()
+# update_user_fields_of_study("888319834", 5)
 
 # Can add subscripts to grab similar first named users ex ('Name')[k]
 # print(persons.to_json())
