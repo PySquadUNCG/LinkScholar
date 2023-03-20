@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-
 import Link from 'next/link';
 import Head from 'next/head'
 import styled from 'styled-components';
 import { Alert, Box } from '@chakra-ui/react';
 import { useColorMode, Button } from "@chakra-ui/react"
+import LinkScholarAPI from './api/hello';
 const SignInPage = () => {
 
   const [successMessage, setSuccessMessage] = useState('');
@@ -40,7 +40,8 @@ const SignInPage = () => {
     if (formData.password === formData.confPassword) {
       console.log('Form submitted:', formData);
       event.preventDefault();
-      setSuccessMessage('Your form has been submitted successfully!');
+      const { response, loaded } = LinkScholarAPI("/api/post/user/", "firstName", { param: firstName })
+      console.error('Your form has been submitted successfully!');
     } else {
       console.error('Passwords do not match: Try Again!'); 
       
