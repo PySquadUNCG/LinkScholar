@@ -123,7 +123,7 @@ def get_all_fields_of_study():
 def update_user_fields_of_study(student_id, fos_id):
     users = get_user_by_school_id(student_id)
     if users.count() == 1:
-        if len(users[0].fields_id) < 3 and fos_id not in users[0].fields_id:
+        if len(users[0].fields_id) < 4 and fos_id not in users[0].fields_id:
             users.update_one(push__fields_id=fos_id)
         else:
             raise Exception("Too many fields or already existing")
@@ -164,8 +164,8 @@ def get_user_fields_of_study(school_id):
 # 'Field_of_Study': [{'_id': 0, 'name': 'Algorithms and Theory of Computing'}, {'_id': 5, 'name': 'Networking'}]}]
 
 
-def get_pretend_teachers_fields_of_study():
-    users = User.objects.aggregate(*[
+def get_teachers_fields_of_study():
+    users = User.objects(is_teacher=True).aggregate(*[
         {
             '$lookup': {
                 'from': FieldsOfStudy._get_collection_name(),
@@ -180,7 +180,7 @@ def get_pretend_teachers_fields_of_study():
         for FOS in result['Field_of_Study']:
             fos.append(FOS['name'])
         temp_dict = {
-            "school_id": result_list[0]["school_id"],
+            "school_id": result["school_id"],
             "Field_of_Study": fos
         }
         output.append(temp_dict)
@@ -204,6 +204,7 @@ if get_all_fields_of_study().count() == 0:
     create_field_of_study(5, "Networking")
     create_field_of_study(6, "Online Social Networks")
     create_field_of_study(7, "Security and Cryptography")
+    create_field_of_study(8, "Artificial Intelligence")
 
 
 

@@ -5,12 +5,14 @@ from database import*
 # create_student("Luke", "Brown", "newpassword2", "888319834", "lcbrown9@uncg.edu")
 #delete_user("888319834")
 #Hard-coding administrator accounts
-# create_admin("Jacky", "Luo", "jacky123","884594913", "j_luo3@uncg.edu")
-# create_admin("Luke", "Brown", "luke123","8883198384", "lcbrown9@uncg.edu")
-# create_admin("Jordan", "Barksdale", "jordan123","874594123", "jkbarksd@uncg.edu")
-# create_admin("Jesea", "Littlejohn", "jesea123","888319832", "jalittl5@uncg.edu")
-# create_admin("Jason", "Martinez-Jimenez", "jason123","884591234", "j_mart24@uncg.edu")
-# create_admin("Devon", "Loy", "devon123","8883198384", "d_loy@uncg.edu")
+# create_teacher("Stephen", "Tate", "tate123", "123456789", "srtate@uncg.edu")
+# create_teacher("Chunjiang", "Zhu", "zhu123", "123456788", "chunjiang.zhu@uncg.edu")
+# create_teacher("Lixin", "Fu", "fu123", "123456787", "lfu@uncg.edu")
+# create_teacher("Minjeong", "Kim", "kim123", "123456786", "mkim@uncg.edu")
+# create_teacher("Jing", "Deng", "deng123", "123456785", "jing.deng@uncg.edu")
+# create_teacher("Regis", "Kopper", "kopper123", "123456784", "kopper@uncg.edu")
+# create_teacher("Yingcheng", "Sun", "sun123", "123456783", "y_sun4@uncg.edu")
+# create_teacher("Shan", "Suthaharan", "suthahran123", "123456782", "s_suthah@uncg.edu")
 
 # grabbing all the users.
 # for user in get_all_users():
@@ -20,8 +22,8 @@ from database import*
 # compare_password("lcbrown9@uncg.edu", "newpassword3")
 
 # Testing Fields
-get_pretend_teachers_fields_of_study()
-# update_user_fields_of_study("888319834", 5)
+get_teachers_fields_of_study()
+
 
 # Can add subscripts to grab similar first named users ex ('Name')[k]
 # print(persons.to_json())
