@@ -195,20 +195,6 @@ def delete_user(school_id):
         raise Exception("No user found")
 
 
-
-def get_student_field_of_study(school_id):
-    if FieldsOfStudy.count() == 1:
-        return StudentFieldOfStudy.objects()
-    else:
-        raise Exception("Student has no fields of study")
-
-def get_professor_field_of_study(school_id):
-    if FieldsOfStudy.count() == 1:
-        return ProfessorFieldOfStudy.objects()
-    else:
-        raise Exception("Professor has no fields of study")
-
-
 if get_all_fields_of_study().count() == 0:
     create_field_of_study(0, "Algorithms and Theory of Computing")
     create_field_of_study(1, "Data Science and Machine Learning")
