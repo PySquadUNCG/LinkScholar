@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Head from 'next/head'
 import styled from 'styled-components';
 import { Alert, Box } from '@chakra-ui/react';
-import { useColorMode, Button } from "@chakra-ui/react"
+import { useColorMode, Button,FormErrorMessage } from "@chakra-ui/react"
 import LinkScholarAPI from './api/hello';
 const SignInPage = () => {
 
@@ -41,7 +41,7 @@ const SignInPage = () => {
       console.log('Form submitted:', formData);
       event.preventDefault();
       const { response, loaded } = LinkScholarAPI("/api/post/user/", "firstName", { param: firstName })
-      console.error('Your form has been submitted successfully!');
+      alert('Your form has been submitted successfully!');
     } else {
       console.error('Passwords do not match: Try Again!'); 
       
@@ -68,13 +68,14 @@ const SignInPage = () => {
         <Link href="/login">Login</Link>
       </div><Head>
         <title>LinkScholar-Sign up</title>
-        <link
+        <Link
           href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
           rel="stylesheet" />
       </Head><body>
 
         <div class="signup-box">
-          <h1>Welcome To LinkScholar!</h1>
+          <h1>Welcome To </h1>
+          <div class = "icon"><img src="/LinkScholar.png" alt="My Image" /></div>
           <h2>Sign up</h2>
       
           <form onSubmit={handleSubmit}>
@@ -85,11 +86,11 @@ const SignInPage = () => {
             <label>Email</label>
             <input type="text" id='email' name="email" value={formData.email} onChange={handleInputChange} required />
             <label>Student ID</label>
-            <input type="number" id='studentId' name="studentId" value={formData.studentId} onChange={handleInputChange} minLength={9} maxLength={9} required />
+            <input type="number" id='studentId' name="studentId" value={formData.studentId} onChange={handleInputChange} minLength= {9} maxLength={9} required />
             <label>Password</label>
-            <input type="password" id='password' name="password" pattern='{7,25}' value={formData.password} onChange={handleInputChange} required />
+            <input type="password" id='password' name="password" value={formData.password} onChange={handleInputChange} required />
             <label>Confirm Password</label>
-            <input type="password" id='confpassword' name="confPassword" pattern='{7,25}' value={formData.confPassword} onChange={handleInputChange} required />
+            <input type="password" id='confpassword' name="confPassword" value={formData.confPassword} onChange={handleInputChange} required />
             {/*<label className='checkboxlabel'>  Is this a Teacher Account?<input type="checkbox" checked={isChecked} onChange={handleCheckboxChange} /></label>*/}
 
             <Link href="/login">
