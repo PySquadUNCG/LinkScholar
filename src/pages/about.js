@@ -22,7 +22,7 @@ const AboutPage = () => {
     <header id = "header">
         <Link href = "/profile" class="header_link">Profile</Link>
         <Link href ="/connect" class = "header_link">Connect</Link>
-        <div class="logo"><img src="/LinkScholar.png" alt="My Image" /></div>
+        <img  class = "logo" src="/LinkScholar.png" alt="My Image" />
         <Link href = "/settings" class="header_link">Settings</Link>
         <Link href = "/index" class = "header_link" id = "signout">Sign Out</Link>
     </header>

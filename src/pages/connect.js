@@ -19,19 +19,19 @@ const ConnectPage = () => {
 
             <div>
                 <header id='header'>
-                    <a href='profile.js' className='header_link'>
+                    <Link href='/profile' className='header_link'>
                         Profile
-                    </a>
-                    <a href='connect.js' className='header_link'>
+                    </Link>
+                    <Link href='/connect' className='header_link'>
                         Connect
-                    </a>
-                    <div class="logo"><img src="/LinkScholar.png" alt="My Image" /></div>
-                    <a href='settings.js' className='header_link'>
+                    </Link>
+                    <img class = "logo" src="/LinkScholar.png" alt="My Image"/>
+                    <Link href='/settings' className='header_link'>
                         Settings
-                    </a>
-                    <a href='index.js' className='header_link' id='signout'>
+                    </Link>
+                    <Link href='/index' className='header_link' id='signout'>
                         Sign Out
-                    </a>
+                    </Link>
                 </header>
 
                 <h1 id='heading'>Connect</h1>

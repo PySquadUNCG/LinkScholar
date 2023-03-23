@@ -25,7 +25,7 @@ const ProfilePage = () => {
 <header id = "header">
     <Link href = "/profile" class="header_link">Profile</Link>
     <Link href ="/connect" class = "header_link">Connect</Link>
-    <div class="logo"><img src="/LinkScholar.png" alt="My Image" /></div>
+    <img class = "logo" src="/LinkScholar.png" alt="My Image" />
     <Link href = "/settings" class="header_link">Settings</Link>
     <Link href = "/index" class = "header_link" id = "signout">Sign Out</Link>
 </header>
@@ -45,9 +45,9 @@ const ProfilePage = () => {
 </div>
 <a href = "index.js"><button id = "to_home">Back </button></a>
 <footer id = "footer">
-    <a href = "about.js" class = "footer_link">About |</a>
-    <a href = "support.js" class="footer_link">Support |</a>
-    <a href = "index.js" class="footer_link">Forgot Username/Password</a>
+    <Link href = "/about" class = "footer_link">About |</Link>
+    <Link href = "/support" class="footer_link">Support |</Link>
+    <Link href = "/index" class="footer_link">Forgot Username/Password</Link>
 
 </footer>
 </body>

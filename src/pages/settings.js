@@ -24,18 +24,18 @@ const SettingPage = () => {
 <header id = "header">
     <Link href = "/profile" class="header_link">Profile</Link>
     <Link href ="/connect" class = "header_link">Connect</Link>
-    <div class="logo"><img src="/LinkScholar.png" alt="My Image" /></div>
+    <img class = "logo" src="/LinkScholar.png" alt="My Image" />
     <Link href = "/settings" class="header_link">Settings</Link>
-    <Link href = "index.js" class = "header_link" id = "signout">Sign Out</Link>
+    <Link href = "/index" class = "header_link" id = "signout">Sign Out</Link>
 </header>
 
 <h1 id = "heading">Configure Settings</h1>
 
 <Link href = "/index"><button id = "to_home">Back </button></Link>
 <footer id = "footer">
-    <Link href = "about.js" class = "footer_link">About |</Link>
-    <Link href = "support.js" class="footer_link">Support |</Link>
-    <Link href = "index.js" class="footer_link">Forgot Username/Password</Link>
+    <Link href = "/about" class = "footer_link">About |</Link>
+    <Link href = "/support" class="footer_link">Support |</Link>
+    <Link href = "/index" class="footer_link">Forgot Username/Password</Link>
 
 </footer>
 </body>
