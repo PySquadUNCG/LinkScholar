@@ -10,31 +10,31 @@ const AboutPage = () => {
 
     return (
         <>
-<div><head>
+<div><Head>
     <title>About</title>
     <Link
                 href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
                 rel="stylesheet"
             />
-</head>
+</Head>
 
 <body>
-    <header id = "header">
-        <a href = "profile.js" class="header_link">Profile</a>
-        <a href ="connect.js" class = "header_link">Connect</a>
-        <div class="logo"><img src="/LinkScholar.png" alt="My Image" /></div>
-        <a href = "settings.js" class="header_link">Settings</a>
-        <a href = "index.js" class = "header_link" id = "signout">Sign Out</a>
+    <header id = "topnav">
+        <Link href = "/profile"> Profile</Link>
+        <Link href ="/connect"> Connect</Link>
+         <div class="logo"><img src="/LinkScholar.png" alt="My Image" /></div>
+        <Link href = "/settings"> Settings</Link>
+        <Link href = "/login" > Sign Out</Link>
     </header>
 
     <h1 id = "heading">About</h1>
 
     
-    <a href = "index.js"><button id = "to_home">Back </button></a>
+   <Link href = "/homepage"> <button id = "to_home">Back </button></Link>
     <footer id = "footer">
-        <a href = "about.js" class = "footer_link">About |</a>
-        <a href = "support.js" class="footer_link">Support |</a>
-        <a href = "index.js" class="footer_link">Forgot Username/Password</a>
+        <Link href = "/about"> <a className = "footer_link">About |</a></Link>
+        <Link href = "/support"> <a className="footer_link">Support |</a></Link>
+        <Link href = "/forgotusrname"> <a className="footer_link">Forgot Username/Password</a></Link>
 
     </footer>
 </body></div>

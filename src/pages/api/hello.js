@@ -1,5 +1,103 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import { useEffect, useState } from 'react'
 
-export default function handler(req, res) {
-  res.status(200).json({ name: 'John Doe' })
+export default function LinkScholarAPI(path, field, params = {}, restMethod = "GET", docType = "application/json", trigger = []) {
+    const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const { url, content } = ConstructURL(path, field, params, restMethod);
+        if (url === "") {
+            return {
+                response: content,
+                loading: false
+            }
+        }
+
+        const reqHeaders = new Headers();
+        reqHeaders.append("Accept", docType);
+
+        if (restMethod === "POST") {
+            reqHeaders.append("Content-Type", docType);
+        }
+
+        const options = {
+            method: restMethod,
+            headers: reqHeaders,
+            body: content,
+            mode: "cors"
+        }
+
+        fetch(url, options)
+            .then(res => res.json())
+            .then(data => {
+                setData(JSON.stringify(data));
+                setLoading(false);
+            })
+            .catch(err => console.error("ERROR FETCHING DATA FROM %s : %s", url, err))
+    }, trigger)
+
+    return {
+        response: data,
+        loaded: loading
+    }
+}
+
+/**
+ * Constructs a url for a GET API call. 
+ * @param {string} path Root URL. Must end in "/".
+ * @param {string} field Field Value. Does not end in "/"
+ * @param {string[]} params Params if they exist.
+ */
+export function ConstructGetURL(path, field = "", params = {}) {
+    let url = "http://localhost:5000";
+    url += path + field;
+
+    const content = null;
+
+    if (Object.keys(params).length > 0) {
+        url += "?";
+        for (let idx = 0; idx < Object.keys(params).length; idx++) {
+            url += Object.keys(params)[idx] + "=" + params[Object.keys(params)[idx]];
+
+            if ((idx < Object.keys(params).length - 1)) {
+                url += "&";
+            }
+        }
+    }
+
+    return { url, content };
+}
+
+/**
+ * Constructs a url for a POST API call. 
+ * @param {string} path Root URL. Must end in "/".
+ * @param {string} field Field Value. Does not end in "/"
+ * @param {string[]} params Params if they exist.
+ */
+export function ConstructPostURL(path, field = "", params = {}) {
+    const url = "http://localhost:5000" + path + field;
+
+    const content = JSON.stringify(params);
+
+    return { url, content };
+}
+
+/**
+ * Constructs a url for an API call. 
+ * @param {string} path Root URL. Must end in "/".
+ * @param {string} field Field Value. Does not end in "/"
+ * @param {string[]} params Params if they exist.
+ * @param {string} method Request Method.
+ */
+export function ConstructURL(path, field = "", params = {}, method = "GET") {
+    if (method === "GET") {
+        return ConstructGetURL(path, field, params);
+    } else if (method === "POST") {
+        return ConstructPostURL(path, field, params);
+    } else {
+        return {
+            url: "",
+            content: JSON.stringify({ ERROR: "BAD REQUEST" })
+        }
+    }
 }

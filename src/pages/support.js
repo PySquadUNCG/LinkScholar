@@ -11,38 +11,39 @@ const SupportPage = () => {
     return (
         <>
 
-   <div>
+            <div>
 
-<head>
-  
-    <title>Settings</title>
-    <Link
-                href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
-                rel="stylesheet"
-            />
-</head>
+                <Head>
 
-<body>
-<header id = "header">
-    <a href = "profile.js" class="header_link">Profile</a>
-    <a href ="connect.js" class = "header_link">Connect</a>
-    <div class="logo"><img src="/LinkScholar.png" alt="My Image" /></div>
-    <a href = "settings.js" class="header_link">Settings</a>
-    <a href = "index.js" class = "header_link" id = "signout">Sign Out</a>
-</header>
+                    <title>Settings</title>
+                    <Link
+                        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+                        rel="stylesheet"
+                    />
+                </Head>
+              
 
-<h1 id = "heading">Support</h1>
+                <body>
+                    <header id="header">
+                        <Link href="/profile"><a className="header_link">Profile</a></Link>
+                        <Link href="/connect"> <a className="header_link">Connect</a></Link>
+                        <div class="logo"><img src="/LinkScholar.png" alt="My Image" /></div>
+                        <Link href="/settings"> <a className="header_link">Settings</a></Link>
+                        <Link href = "/signin" > <a className="header_link" id="signout">Sign Out</a></Link>
+                </header>
 
-<a href = "index.js"><button id = "to_home">Back </button></a>
-<footer id = "footer">
-    <a href = "about.js" class = "footer_link">About |</a>
-    <a href = "support.js" class="footer_link">Support |</a>
-    <a href = "index.js" class="footer_link">Forgot Username/Password</a>
+                <h1 id="heading">Support</h1>
 
-</footer>
-</body>
+                <Link href="/homepage"><button id="to_home">Back </button></Link>
+                <footer id="footer">
+                    <Link href="/about"><a className="footer_link">About | </a></Link>
+                    <Link href="/support"><a className="footer_link">Support |</a></Link>
+                    <Link href="/forgotusrname"> <a className="footer_link">Forgot Username/Password</a></Link>
 
-</div>
+                </footer>
+            </body>
+
+        </div>
 </>
 
 

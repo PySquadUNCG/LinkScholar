@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
 import styled from 'styled-components';
-import { Box } from '@chakra-ui/react';
 import Image from 'next/image';
 
 const ConnectPage = () => {
@@ -19,19 +18,19 @@ const ConnectPage = () => {
 
             <div>
                 <header id='header'>
-                    <a href='profile.js' className='header_link'>
+                   <Link href='/profile'> <a  className='header_link'>
                         Profile
-                    </a>
-                    <a href='connect.js' className='header_link'>
+                    </a></Link>
+                    <Link href='/connect'><a className='header_link'>
                         Connect
-                    </a>
+                    </a></Link>
                     <div class="logo"><img src="/LinkScholar.png" alt="My Image" /></div>
-                    <a href='settings.js' className='header_link'>
+                   <Link href='/settings'> <a className='header_link'>
                         Settings
-                    </a>
-                    <a href='index.js' className='header_link' id='signout'>
+                    </a></Link>
+                    <Link href='/index'><a className='header_link' id='signout'>
                         Sign Out
-                    </a>
+                    </a></Link>
                 </header>
 
                 <h1 id='heading'>Connect</h1>
@@ -69,19 +68,19 @@ const ConnectPage = () => {
                         <button>Submit</button>
                     </form>
                 </div>
-                <a href='index.js'>
+               <Link href='/homepage'>
                     <button id='to_home'>Back </button>
-                </a>
+                </Link>
                 <footer id='footer'>
-                    <a href='about.js' className='footer_link'>
+                   <Link href='/about'> <a className='footer_link'>
                         About |
-                    </a>
-                    <a href='support.js' className='footer_link'>
+                    </a></Link>
+                    <Link href='/support' ><a className='footer_link'>
                         Support |
-                    </a>
-                    <a href='index.js' className='footer_link'>
+                    </a></Link>
+                   <Link href='/forgotusrname'> <a className='footer_link'>
                         Forgot Username/Password
-                    </a>
+                    </a></Link>
                 </footer>
             </div>
         </>

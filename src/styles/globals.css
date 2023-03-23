@@ -226,15 +226,6 @@ form label {
   border-radius: 6px;
   outline: none;
 }
-/*Profile page css*/
-.profile-box{
-  width: 1200px;
-  height: 1300px;
-  margin: auto;
-  border-radius: 3px;
-  background-color: white;
-
-}
 
 form input {
   width: 100%;
@@ -337,3 +328,96 @@ p {
   background-color: #ffb71b;
   color: white;
 }
+
+/*Jason CSS*/ 
+
+body{
+  background-color: #bec0c2;
+  color: #332e2e;
+  font-family: "Lucida Sans";
+}
+
+#header{
+
+  position:absolute;
+  top: 0px;
+  left: 0px;
+
+  height: 15%;
+  width: 100%;
+
+  background-color: #083456;
+
+}
+#heading{
+  position: absolute;
+  top: 22%;
+  left: 10%;
+}
+
+#footer {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+
+  height: 7.5%;
+  width: 100%;
+
+  background-color: #332e2e;
+  color: #ffffff;
+
+  text-align: center;
+}
+
+#to_home{
+  color:#083456;
+  background-color: #fdba13;
+  border-radius: 6px;
+  border-color: transparent;
+
+  width:  10%;
+  height: 5%;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: "Lucida Sans";
+
+  position: absolute;
+  bottom: 15%;
+  right: 10%;
+
+}
+
+.logo{
+  width: 20%;
+  height : 50%;
+
+  margin-left: 10%;
+  position: relative;
+  top: 25%;
+}
+
+.header_link{
+  margin-left: 10%;
+
+  font-size: 18px;
+  font-weight:bold;
+  text-decoration: none;
+
+  color: #fdba13;
+
+}
+.footer_link{
+  text-decoration: none;
+
+  position: relative;
+  top: 35%;
+
+  color: #bec0c2;
+}
+
+.lone_display_group{
+  position: absolute;
+  top: 30%;
+  left: 10%;
+}
+
