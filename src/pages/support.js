@@ -28,12 +28,12 @@ const SupportPage = () => {
     <Link href ="/connect" class = "header_link">Connect</Link>
     <img class ="logo" src="/LinkScholar.png" alt="My Image" />
     <Link href = "/settings" class="header_link">Settings</Link>
-    <Link href = "/index" class = "header_link" id = "signout">Sign Out</Link>
+    <Link href = "/signin" class = "header_link" id = "signout">Sign Out</Link>
 </header>
 
 <h1 id = "heading">Support</h1>
 
-<Link href = "/index"><button id = "to_home">Back </button></Link>
+<Link href = "/homepage"><button id = "to_home">Back </button></Link>
 <footer id = "footer">
     <Link href = "/about" class = "footer_link">About |</Link>
     <Link href = "/support" class="footer_link">Support |</Link>

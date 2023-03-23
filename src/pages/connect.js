@@ -29,7 +29,7 @@ const ConnectPage = () => {
                     <Link href='/settings' className='header_link'>
                         Settings
                     </Link>
-                    <Link href='/index' className='header_link' id='signout'>
+                    <Link href='/signin' className='header_link' id='signout'>
                         Sign Out
                     </Link>
                 </header>
@@ -69,9 +69,9 @@ const ConnectPage = () => {
                         <button>Submit</button>
                     </form>
                 </div>
-                <a href='index.js'>
+                <Link href='/homepage'>
                     <button id='to_home'>Back </button>
-                </a>
+                </Link>
                 <footer id='footer'>
                     <Link href='/about' className='footer_link'>
                         About |

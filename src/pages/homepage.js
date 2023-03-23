@@ -22,14 +22,13 @@ const HomePage = () => {
 <header id = "header">
     <Link href = "/profile" class="header_link">Profile</Link>
     <Link href ="/connect" class = "header_link">Connect</Link>
-    <div class="logo"><img src="/LinkScholar.png" alt="My Image" /></div>
+    <img class = 'logo' src="/LinkScholar.png" alt="My Image" />
     <Link href = "/settings" class="header_link">Settings</Link>
-    <Link href = "/index" class = "header_link" id = "signout">Sign Out</Link>
+    <Link href = "/signin" class = "header_link" id = "signout">Sign Out</Link>
 </header>
 
 <h1 id = "heading">Homepage</h1>
 
-<button id = "uncg" type = "button">Go</button>
 
 <footer id = "footer">
     <Link href = "/about" class = "footer_link">About |</Link>
