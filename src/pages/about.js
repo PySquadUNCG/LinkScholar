@@ -20,21 +20,21 @@ const AboutPage = () => {
 
 <body>
     <header id = "header">
-        <a href = "profile.js" class="header_link">Profile</a>
-        <a href ="connect.js" class = "header_link">Connect</a>
+        <Link href = "/profile" class="header_link">Profile</Link>
+        <Link href ="/connect" class = "header_link">Connect</Link>
         <div class="logo"><img src="/LinkScholar.png" alt="My Image" /></div>
-        <a href = "settings.js" class="header_link">Settings</a>
-        <a href = "index.js" class = "header_link" id = "signout">Sign Out</a>
+        <Link href = "/settings" class="header_link">Settings</Link>
+        <Link href = "/index" class = "header_link" id = "signout">Sign Out</Link>
     </header>
 
     <h1 id = "heading">About</h1>
 
     
-    <a href = "index.js"><button id = "to_home">Back </button></a>
+    <Link href = "/index"><button id = "to_home">Back </button></Link>
     <footer id = "footer">
-        <a href = "about.js" class = "footer_link">About |</a>
-        <a href = "support.js" class="footer_link">Support |</a>
-        <a href = "index.js" class="footer_link">Forgot Username/Password</a>
+        <Link href = "/about" class = "footer_link">About |</Link>
+        <Link href = "/support" class="footer_link">Support |</Link>
+        <Link href = "/index" class="footer_link">Forgot Username/Password</Link>
 
     </footer>
 </body></div>

@@ -73,15 +73,15 @@ const ConnectPage = () => {
                     <button id='to_home'>Back </button>
                 </a>
                 <footer id='footer'>
-                    <a href='about.js' className='footer_link'>
+                    <Link href='/about' className='footer_link'>
                         About |
-                    </a>
-                    <a href='support.js' className='footer_link'>
+                    </Link>
+                    <Link href='/support' className='footer_link'>
                         Support |
-                    </a>
-                    <a href='index.js' className='footer_link'>
+                    </Link>
+                    <Link href='/index' className='footer_link'>
                         Forgot Username/Password
-                    </a>
+                    </Link>
                 </footer>
             </div>
         </>
