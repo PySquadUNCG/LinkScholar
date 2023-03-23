@@ -24,7 +24,7 @@ const ConnectPage = () => {
                     <Link href='/connect'><a className='header_link'>
                         Connect
                     </a></Link>
-                    <div class="logo"><img src="/LinkScholar.png" alt="My Image" /></div>
+                    <img class = 'logo' src="/LinkScholar.png" alt="My Image" />
                    <Link href='/settings'> <a className='header_link'>
                         Settings
                     </a></Link>

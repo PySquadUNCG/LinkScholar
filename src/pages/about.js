@@ -22,7 +22,7 @@ const AboutPage = () => {
     <header id = "topnav">
         <Link href = "/profile"> Profile</Link>
         <Link href ="/connect"> Connect</Link>
-         <div class="logo"><img src="/LinkScholar.png" alt="My Image" /></div>
+        <img class = 'logo' src="/LinkScholar.png" alt="My Image" />
         <Link href = "/settings"> Settings</Link>
         <Link href = "/login" > Sign Out</Link>
     </header>
