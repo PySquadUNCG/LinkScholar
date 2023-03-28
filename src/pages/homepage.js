@@ -24,7 +24,7 @@ const HomePage = () => {
     <Link href = "/connect"> <a className = "header_link">Connect</a></Link>
     <img class = 'logo' src="/LinkScholar.png" alt="My Image" />
     <Link href = "/settings"> <a className="header_link">Settings</a></Link>
-    <Link href = "login"> <a className= "header_link" id = "signout">Sign Out</a></Link>
+    <Link href = "/login"> <a className= "header_link" id = "signout">Sign Out</a></Link>
 </header>
 
 <h1 id = "heading">Homepage</h1>

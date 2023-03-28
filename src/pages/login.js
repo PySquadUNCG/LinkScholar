@@ -56,7 +56,7 @@ const LogInPage = () => {
     <Link href="/signin">Sign Up</Link>
   </div>
   
-  <body>
+  <body className ='jb'>
     <div class="login-box">
       <div class = "icon"><img src="/LinkScholar.png" alt="My Image" />
 </div>

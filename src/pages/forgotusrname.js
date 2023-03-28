@@ -107,7 +107,7 @@ function Forgot() {
                     rel="stylesheet"
                 />
             </Head>
-            <body>
+            <body className = 'jb'>
                 <div class="topnav">
                     <Link href="/login">Login</Link>
                     <Link href="/signin">Sign In</Link>

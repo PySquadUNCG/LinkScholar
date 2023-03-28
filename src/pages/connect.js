@@ -28,7 +28,7 @@ const ConnectPage = () => {
                    <Link href='/settings'> <a className='header_link'>
                         Settings
                     </a></Link>
-                    <Link href='/index'><a className='header_link' id='signout'>
+                    <Link href='/login'><a className='header_link' id='signout'>
                         Sign Out
                     </a></Link>
                 </header>
