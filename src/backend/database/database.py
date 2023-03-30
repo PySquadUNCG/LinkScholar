@@ -17,6 +17,7 @@ class User(Document):
     email = StringField(required=True)
     is_teacher = BooleanField(required=True, default=False)
     fields_id = ListField()
+    match_id = ListField()
 
 
 class FieldsOfStudy(Document):
@@ -52,11 +53,6 @@ def create_student(first_name, last_name, user_pass, school_id, email):
 
 def create_teacher(first_name, last_name, user_pass, school_id, email):
     create_user(first_name, last_name, user_pass, school_id, email, True)
-
-
-# Remind front end team to not leave an option available to sign up as an administrator
-# def create_admin(first_name, last_name, user_pass, school_id, email, is_teacher):
-#     create_user(first_name, last_name, user_pass, school_id, email, is_teacher, True)
 
 
 def get_all_users():
@@ -131,14 +127,6 @@ def update_user_fields_of_study(student_id, fos_id):
         raise Exception("No unique user found")
 
 
-# def get_user_fields_of_study(school_id):
-#     q_set = User.objects(school_id=school_id)
-#     if q_set.count() == 1:
-#         temp_q = q_set.only('school_id', 'fields_id').exclude('id')
-#         return temp_q
-#     else:
-#         raise Exception("User not found")
-
 def get_user_fields_of_study(school_id):
     users = User.objects(school_id=school_id).aggregate(*[
         {
@@ -157,11 +145,6 @@ def get_user_fields_of_study(school_id):
         "Field_of_Study": fos
     }
     return print(json.dumps(temp_dict))
-
-#[{'_id': ObjectId('6416226b7ca58f762a323722'), 'first_name': 'Luke', 'last_name': 'Brown',
-# 'user_pass': '$2b$12$vawrnNJxkJI5UoJMVhS3LOmEYE57lFg6YKgdO7A0157tj08tcYy1i', 'school_id': '888319834',
-# 'email': 'lcbrown9@uncg.edu', 'is_teacher': False, 'fields_id': [0, 5],
-# 'Field_of_Study': [{'_id': 0, 'name': 'Algorithms and Theory of Computing'}, {'_id': 5, 'name': 'Networking'}]}]
 
 
 def get_teachers_fields_of_study():
@@ -184,7 +167,7 @@ def get_teachers_fields_of_study():
             "Field_of_Study": fos
         }
         output.append(temp_dict)
-    return print(json.dumps(output))
+    return json.dumps(output)
 
 
 def delete_user(school_id):
@@ -193,6 +176,15 @@ def delete_user(school_id):
         users[0].delete()
     else:
         raise Exception("No user found")
+
+
+def update_match(s_school_id, t_school_id):
+    users = get_user_by_school_id(s_school_id)
+
+    if users.count() == 1:
+        users.update_one(set__match_id=t_school_id)
+    else:
+        raise Exception("No unique user found")
 
 
 if get_all_fields_of_study().count() == 0:

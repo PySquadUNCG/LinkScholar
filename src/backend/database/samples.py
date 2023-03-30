@@ -1,8 +1,18 @@
 from database import*
 
 #creating a user
-#create_student("testID", "fds", "testpassword","123456789", "j_luo3@uncg.edu")
-# create_student("Luke", "Brown", "newpassword2", "888319834", "lcbrown9@uncg.edu")
+
+# create_student("Luke", "Brown", "newpassword", "888319834", "lcbrown9@uncg.edu")
+# update_user_fields_of_study("888319834", 0)
+# update_user_fields_of_study("888319834", 1)
+# update_user_fields_of_study("888319834", 2)
+
+# Testing update_match
+# update_match("888319834","123456783")
+#
+# test_list = ['123456789', '123456788']
+# update_match('888319834', test_list)
+# print(get_teachers_fields_of_study())
 #delete_user("888319834")
 #Hard-coding administrator accounts
 # create_teacher("Stephen", "Tate", "tate123", "123456789", "srtate@uncg.edu")
@@ -19,10 +29,10 @@ from database import*
 #     print(user.to_json())
 
 # change_password("lcbrown9@uncg.edu", "newpassword2")
-# compare_password("lcbrown9@uncg.edu", "newpassword3")
+# print(compare_password("j_luo3@uncg.edu", "testp2ssword"))
 
 # Testing Fields
-get_teachers_fields_of_study()
+# get_teachers_fields_of_study()
 
 
 # Can add subscripts to grab similar first named users ex ('Name')[k]
