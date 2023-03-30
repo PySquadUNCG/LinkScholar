@@ -59,6 +59,11 @@ def get_all_users():
     return User.objects()
 
 
+def get_all_students():
+    q_set = User.objects(is_teacher=False)
+    return q_set
+
+
 def get_user_by_first_name(name):
     q_set = User.objects(first_name=name)
     return q_set
