@@ -10,8 +10,8 @@ from database import*
 # Testing update_match
 # update_match("888319834","123456783")
 #
-# test_list = ['123456789', '123456788']
-# update_match('888319834', test_list)
+test_list = ['123456789', '123456788']
+update_match('888319834', test_list)
 # print(get_teachers_fields_of_study())
 #delete_user("888319834")
 #Hard-coding administrator accounts
