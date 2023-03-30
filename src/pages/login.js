@@ -1,6 +1,7 @@
 import React, { useEffect,useState } from 'react'
 import Link from 'next/link';
 import Head from 'next/head'
+import axios from "axios";
 import styled from 'styled-components';
 import { Box } from '@chakra-ui/react';
 import Image from "next/image";

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Head from 'next/head'
+import axios from "axios";
 import styled from 'styled-components';
 import { Alert, Box } from '@chakra-ui/react';
 import { useColorMode, Button,FormErrorMessage } from "@chakra-ui/react"
@@ -40,13 +41,34 @@ const SignInPage = () => {
     if (formData.password === formData.confPassword) {
       console.log('Form submitted:', formData);
       event.preventDefault();
-      const { response, loaded } = LinkScholarAPI("/api/post/user/", "firstName", { param: firstName })
+      const { response, loaded } = LinkScholarAPI("/api/get/user/", "email", { param: "d_loy@uncg.edu" });
+     /* const form = event.target;
+      const data = new FormData(form);
+      const obj = {};
+      data.forEach((value,key) => {
+        obj[key] = value;
+      });
+      setFormData(obj);*/
       alert('Your form has been submitted successfully!');
     } else {
       console.error('Passwords do not match: Try Again!'); 
       
     }
   };
+
+  const postData = () => {
+    const user = {formData};
+    const response = fetch("/hello", {
+    method: "POST",
+    headers: {
+    'name' : formData.firstName,
+    },
+    body: JSON.stringify(user)
+    })
+    if (response.ok){
+    console.log("it worked")
+    }
+  }
 
   // Check if all form inputs have a value
 
@@ -94,7 +116,7 @@ const SignInPage = () => {
             {/*<label className='checkboxlabel'>  Is this a Teacher Account?<input type="checkbox" checked={isChecked} onChange={handleCheckboxChange} /></label>*/}
 
             <Link href="/login">
-              <button className='submit' type="submit" disabled={!formFilled} > Sign Up </button>
+              <button onClick={postData} className='submit' type="submit" disabled={!formFilled} > Sign Up </button>
             </Link>
 
           </form>

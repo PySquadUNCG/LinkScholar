@@ -2,6 +2,7 @@
   "name": "linkscholar",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:5000",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -13,6 +14,7 @@
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@next/font": "13.1.5",
+    "axios": "^1.3.4",
     "eslint": "8.32.0",
     "eslint-config-next": "13.1.5",
     "express": "^4.18.2",
