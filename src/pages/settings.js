@@ -10,7 +10,7 @@ const SettingPage = () => {
 
     return (
         <>
-<div>
+
    
 <Head>
     <title>Settings</title>
@@ -19,8 +19,8 @@ const SettingPage = () => {
                 rel="stylesheet"
             />
 </Head>
-
-<body>
+<div className='json'>
+<body >
 <header id = "header">
    <Link href = "/profile"> <a className="header_link">Profile</a></Link>
    <Link href = "/connect"> <a className = "header_link">Connect</a></Link>

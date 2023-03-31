@@ -16,7 +16,8 @@ const ConnectPage = () => {
                 />
             </Head>
 
-            <div>
+            <div className='json'>
+                <body>
                 <header id='header'>
                    <Link href='/profile'> <a  className='header_link'>
                         Profile
@@ -82,6 +83,7 @@ const ConnectPage = () => {
                         Forgot Username/Password
                     </a></Link>
                 </footer>
+                </body>
             </div>
         </>
     );

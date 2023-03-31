@@ -46,18 +46,21 @@ const LogInPage = () => {
 
   return (
 
-    <><Head>
+    <>
+    <Head>
     <title>Linkscholar-Login</title>
     <Link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
       rel="stylesheet"
     />
-  </Head><div class="topnav">
+    
+  </Head>  <div className='jb'>
+    <div class="topnav">
     <a class="active" >Login</a>
     <Link href="/signin">Sign Up</Link>
   </div>
-  
-  <body className ='jb'>
+ 
+  <body>
     <div class="login-box">
       <div class = "icon"><img src="/LinkScholar.png" alt="My Image" />
 </div>
@@ -78,7 +81,9 @@ const LogInPage = () => {
       </Link>
     </div>
     
-  </body></>
+  </body>
+  </div>
+  </>
 
   )
 }

@@ -107,16 +107,14 @@ function Forgot() {
                     rel="stylesheet"
                 />
             </Head>
-            <body className = 'jb'>
+            <div className = 'jb'>
+            <body >
                 <div class="topnav">
                     <Link href="/login">Login</Link>
                     <Link href="/signin">Sign In</Link>
                 </div>
                 <div class="forgot-box">
-                    <div className='forgotstatement'>
-                        <a className='labelname2' >Yikes, Forgot Your Username?</a><br></br>
-                        <a className='labelname2' >We got you Covered.</a>
-                    </div>
+
                     <div class="icon"><img src="/LinkScholar.png" alt="My Image" />
                     </div>
                     <FormControl isRequired isInvalid={touched.name && !values.name} mb={5} onChange={handleSubmit}>
@@ -132,7 +130,7 @@ function Forgot() {
                         />
                         <FormErrorMessage className='forgoterror'>Required</FormErrorMessage> 
                         <Link href="/login">
-                        <button className='submit' type="submit" disabled={!formFilled}> Confirm </button>
+                        <button className='submit-2' type="submit" disabled={!formFilled}> Confirm </button>
                     </Link>
                     </FormControl>
                    
@@ -140,7 +138,7 @@ function Forgot() {
 
                 </div>
 
-            </body></>
+            </body></div></>
     );
 }
 

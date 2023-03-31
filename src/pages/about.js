@@ -10,15 +10,15 @@ const AboutPage = () => {
 
     return (
         <>
-<div><Head>
+<Head>
     <title>About</title>
     <Link
                 href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
                 rel="stylesheet"
             />
 </Head>
-
-<body>
+<div className='json'>
+<body >
     <header id = "topnav">
         <Link href = "/profile"> Profile</Link>
         <Link href ="/connect"> Connect</Link>

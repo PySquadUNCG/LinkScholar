@@ -10,18 +10,18 @@ const ProfilePage = () => {
 
     return (
         <>
-<div>
+
    
-<head>
+<Head>
    
     <title>Profile</title>
     <Link
                 href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
                 rel="stylesheet"
             />
-</head>
-
-<body>
+</Head>
+<div className='json'>
+<body >
 <header id = "header">
     <Link href = "/profile"> <a className="header_link">Profile</a></Link>
     <Link href = "/connect"> <a className = "header_link">Connect</a></Link>

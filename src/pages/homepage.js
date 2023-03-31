@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link';
 import Head from 'next/head'
+import axios from "axios";
 import styled from 'styled-components';
 import { Box } from '@chakra-ui/react';
 import Image from "next/image";
@@ -10,15 +11,16 @@ const HomePage = () => {
 
     return (
         <>
-<div><head>
+<Head>
    
     <title>Homepage</title>
     <Link
                 href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
                 rel="stylesheet"
             />
-</head>
-<body>
+</Head>
+<div className='json'>
+<body >
 <header id = "header">
     <Link href = "/profile"> <a className="header_link">Profile</a></Link>
     <Link href = "/connect"> <a className = "header_link">Connect</a></Link>

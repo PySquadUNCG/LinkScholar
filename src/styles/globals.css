@@ -4,7 +4,12 @@ a {
   text-decoration: none;
 }
 
-
+body{
+  background-color: inherit;
+  margin: 0;
+  padding: 0;
+  height: 1080px;
+}
 /* Scroll bar stylings */
 ::-webkit-scrollbar {
   width: 14px;
@@ -39,7 +44,7 @@ a {
 
 .signup-box {
   width: 360px;
-  height: 950px;
+  height: 1000px;
   margin: auto;
   background-color: white;
   border-radius: 3px;
@@ -169,6 +174,21 @@ form input {
   color: white;
   font-size: 1rem;
 }
+.submit-2 {
+  margin-left: 17.5px;
+  display: inline-block;
+  padding: 10px 0px;
+  width: 320px;
+  height: 35px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffb71b;
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+}
 
 .submit:hover {
   width: 320px;
@@ -179,10 +199,26 @@ form input {
   color: white;
   font-size: 1rem;
 }
+.submit-2:hover {
+  width: 320px;
+  height: 35px;
+  margin-top: 20px;
+  border: none;
+  background-color: #a00c30;
+  color: white;
+  font-size: 1rem;
+}
+
 
 .indent{
   margin-top: 10px;
   margin-left: 60px;
+  color: #49c1a2;
+}
+.indent-2{
+  margin-top: 10px;
+  margin-left: 60px;
+  color: #49c1a2;
 }
 p {
   text-align: center;
@@ -231,7 +267,7 @@ p {
 
 /*Jason CSS*/ 
 
-body{
+.json {
   background-color: #bec0c2;
   color: #332e2e;
   font-family: "Lucida Sans";
@@ -256,7 +292,7 @@ body{
 }
 
 #footer {
-  position: absolute;
+  position: fixed;
   bottom: 0px;
   left: 0px;
 

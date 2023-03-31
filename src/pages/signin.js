@@ -41,39 +41,48 @@ const SignInPage = () => {
     if (formData.password === formData.confPassword) {
       console.log('Form submitted:', formData);
       event.preventDefault();
-      const { response, loaded } = LinkScholarAPI("/api/get/user/", "email", { param: "d_loy@uncg.edu" });
-     /* const form = event.target;
+     /* const { response, loaded } = LinkScholarAPI("/api/get/user/", "email", { param: "d_loy@uncg.edu" });
+      const form = event.target;
       const data = new FormData(form);
       const obj = {};
       data.forEach((value,key) => {
         obj[key] = value;
       });
       setFormData(obj);*/
-      alert('Your form has been submitted successfully!');
+      fetch('/src/backend/api/API', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error(error));
+      alert("Your form has been submitted successfully!");
     } else {
       console.error('Passwords do not match: Try Again!'); 
       
     }
   };
 
-  const postData = () => {
-    const user = {formData};
-    const response = fetch("/hello", {
-    method: "POST",
-    headers: {
-    'name' : formData.firstName,
-    },
-    body: JSON.stringify(user)
+  /*const postData = () => {
+    fetch('/src/backend/api/API', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
     })
-    if (response.ok){
-    console.log("it worked")
-    }
-  }
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error(error));
+  }*/
 
   // Check if all form inputs have a value
 
   useEffect(() => {
-    if (formData.password === formData.confPassword) {
+    if (formData.password === formData.confPassword && formData.studentId.length === 9 ) {
       const isFormFilled = Object.values(formData).every((value) => value !== '');
       setFormFilled(isFormFilled);
     } else { 
@@ -84,7 +93,7 @@ const SignInPage = () => {
   return (
 
     <>
-
+      <div className='jb'>
       <div class="topnav">
         <a class="active">Sign Up</a>
         <Link href="/login">Login</Link>
@@ -93,7 +102,7 @@ const SignInPage = () => {
         <Link
           href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
           rel="stylesheet" />
-      </Head><body className = 'jb'>
+      </Head><body>
 
         <div class="signup-box">
           <h1>Welcome To </h1>
@@ -116,7 +125,7 @@ const SignInPage = () => {
             {/*<label className='checkboxlabel'>  Is this a Teacher Account?<input type="checkbox" checked={isChecked} onChange={handleCheckboxChange} /></label>*/}
 
             <Link href="/login">
-              <button onClick={postData} className='submit' type="submit" disabled={!formFilled} > Sign Up </button>
+              <button /*onClick={postData}*/ className='submit' type="submit" disabled={!formFilled} > Sign Up </button>
             </Link>
 
           </form>
@@ -129,7 +138,7 @@ const SignInPage = () => {
         </div>
         
       </body>
-
+</div>
     </>
 
   )
