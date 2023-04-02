@@ -73,13 +73,8 @@ def get_user_by_last_name(lastname):
     q_set = User.objects(last_name=lastname)
     return q_set
 
+
 # Takes first part of email to query the database.
-
-def get_user_by_email(email):
-    q_set = User.objects(email__startswith=email)
-    return q_set
-
-
 def get_user_by_email_no_domain(email):
     email_to_query = email + "@"
     q_set = User.objects(email__startswith=email_to_query)
@@ -153,7 +148,7 @@ def get_user_fields_of_study(school_id):
         "school_id": result_list[0]["school_id"],
         "Field_of_Study": fos
     }
-    return print(json.dumps(temp_dict))
+    return temp_dict
 
 
 def get_teachers_fields_of_study():
@@ -176,7 +171,7 @@ def get_teachers_fields_of_study():
             "Field_of_Study": fos
         }
         output.append(temp_dict)
-    return json.dumps(output)
+    return output
 
 
 def delete_user(school_id):
@@ -194,6 +189,15 @@ def update_match(s_school_id, t_school_id):
         users.update_one(set__match_id=t_school_id)
     else:
         raise Exception("No unique user found")
+
+
+def get_match_id(school_id):
+    q_set = User.objects(school_id=school_id)
+    match_ids = []
+
+    for user in q_set:
+        match_ids += user.match_id
+    return json.dumps(match_ids)
 
 
 if get_all_fields_of_study().count() == 0:
