@@ -73,6 +73,10 @@ def get_user_by_last_name(lastname):
 
 # Takes first part of email to query the database.
 
+def get_user_by_email(email):
+    q_set = User.objects(email__startswith=email)
+    return q_set
+
 
 def get_user_by_email_no_domain(email):
     email_to_query = email + "@"
@@ -86,7 +90,7 @@ def get_user_by_school_id(school_id):
 
 
 def change_password(email, new_password):
-    users = get_user_by_email_no_domain(email)
+    users = get_user_by_email(email)
     if users.count() == 1:
         users[0].user_pass = bcrypt.hashpw(new_password.encode('utf-8'), bcrypt.gensalt())
         users[0].save()

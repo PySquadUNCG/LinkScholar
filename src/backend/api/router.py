@@ -78,7 +78,7 @@ def getReqUser(field):
         "firstName": get_user_by_first_name,
         "lastName": get_user_by_last_name,
         "schoolID": get_user_by_school_id,
-        "email": get_user_by_email_no_domain
+        "email": get_user_by_email
     }
 
     try:

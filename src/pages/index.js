@@ -25,10 +25,10 @@ export default function Home() {
 
   const changePass = {
     email: "d_loy@uncg.edu",
-    new_password: "CHANGED_PASS"
+    new_password: "Keiberunis12haodAK10-11231"
   }
 
-  const { response, loaded } = LinkScholarAPI("/api/get/user/", "email", { param: "lcbrown9@uncg.edu" });
+  const { response, loaded } = LinkScholarAPI("/api/get/user/", "email", { param: "d_loy@uncg.edu" });
   //const { response, loaded } = LinkScholarAPI("/api/post/user/", "student", newStudent, "POST");
   //const { response, loaded } = LinkScholarAPI("/api/post/account/", "changePassword", changePass, "POST");
 
