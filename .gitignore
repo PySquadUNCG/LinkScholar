@@ -10,8 +10,8 @@
 /src/backend/api/pyapi/Lib/site-packages/__pycache__
 /src/backend/api/pyapi/__pycache__
 /src/backend/api/__pycache__
-/src/database/__pycache__
-/src/database/.idea
+/src/backend/database/__pycache__
+/src/backend/database/.idea
 
 # testing
 /coverage
