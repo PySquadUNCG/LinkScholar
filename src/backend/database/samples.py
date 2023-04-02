@@ -1,4 +1,5 @@
 from database import*
+from compatibility import*
 
 #creating a user
 
@@ -10,8 +11,8 @@ from database import*
 # Testing update_match
 # update_match("888319834","123456783")
 #
-test_list = ['123456789', '123456788']
-update_match('888319834', test_list)
+# test_list = ['123456789', '123456788']
+# update_match('888319834', test_list)
 # print(get_teachers_fields_of_study())
 #delete_user("888319834")
 #Hard-coding administrator accounts
@@ -32,8 +33,7 @@ update_match('888319834', test_list)
 # print(compare_password("j_luo3@uncg.edu", "testp2ssword"))
 
 # Testing Fields
-# get_teachers_fields_of_study()
-
+# print(get_teachers_fields_of_study())
 
 # Can add subscripts to grab similar first named users ex ('Name')[k]
 # print(persons.to_json())
@@ -42,3 +42,8 @@ update_match('888319834', test_list)
 # How to grab ids from mongodb
 # person = get_user_by_first_name('Allen')[0]
 # print(str(person.id))
+#
+# print(compute_compatibility("888319834"))
+
+#
+# print(get_match_id("888319834"))
