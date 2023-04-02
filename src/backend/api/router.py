@@ -14,6 +14,7 @@ sys.path.append('../')
 #Import routed functions.
 from database.testPrompt import *
 from database.database import *
+from database.compatibility import compute_compatibility
 
 app = Flask(__name__)
 
@@ -169,6 +170,34 @@ def postReqAccount(field):
             postReqRouter[field](
                 str(data['email']),
                 str(data['new_password'])
+            )
+            return createResponse(content=jsonify({"Status": "Success"}), status=200, corsHeaders="POST,OPTIONS")
+        except TypeError:
+            return createResponse(content=jsonify({"Error": "The requested data could not be fetched due to a type mismatch."}), status=500)
+        except KeyError:
+            return createResponse(content=jsonify({"Error": "The keys for the requested operation do not match with required keys.", "Keys": data}), status=400)
+        except Exception as e:
+            return createResponse(content=jsonify({"Error": str(e) + "."}), status=400)
+        
+@app.route("/api/post/match/<string:field>", methods=['POST', 'OPTIONS'])
+def postReqAccount(field):
+    field.replace("/", "").strip()
+
+    postReqRouter = {
+        "getUserMatch": compute_compatibility,
+    }
+
+    if(request.method == "OPTIONS"):
+        try:
+            return createResponse(content=jsonify({"Status": "Preflight Success"}), status=200, corsHeaders="POST,OPTIONS", preflight=True)
+        except:
+            return createResponse(content=jsonify({"Error": "Preflight request failed!"}), status=400)
+    else:
+        data = request.get_json()
+
+        try:
+            postReqRouter[field](
+                str(data['school_id'])
             )
             return createResponse(content=jsonify({"Status": "Success"}), status=200, corsHeaders="POST,OPTIONS")
         except TypeError:
