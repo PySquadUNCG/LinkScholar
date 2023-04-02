@@ -78,7 +78,7 @@ def getReqUser(field):
         "firstName": get_user_by_first_name,
         "lastName": get_user_by_last_name,
         "schoolID": get_user_by_school_id,
-        "email": get_user_by_email_no_domain
+        "email": get_user_by_email
     }
 
     try:
@@ -89,7 +89,7 @@ def getReqUser(field):
     except TypeError:
         return createResponse(content=jsonify({"Error": "The requested data could not be fetched due to a type mismatch."}), status=500)
     except KeyError:
-        return createResponse(content=jsonify({"Error": "The keys for the requested operation do not match with required keys."}), status=400)
+        return createResponse(content=jsonify({"Error": "The keys for the requested operation do not match with required keys.", "Keys": request.args.to_dict()}), status=400)
     except:
         return createResponse(content=jsonify({"Error": "Invalid Request! Check headers for more information."}), status=400)
     
@@ -111,12 +111,12 @@ def getReqFieldOfStudy(field):
     except TypeError:
         return createResponse(content=jsonify({"Error": "The requested data could not be fetched due to a type mismatch."}), status=500)
     except KeyError:
-        return createResponse(content=jsonify({"Error": "The keys for the requested operation do not match with required keys."}), status=400)
+        return createResponse(content=jsonify({"Error": "The keys for the requested operation do not match with required keys.", "Keys": request.args.to_dict()}), status=400)
     except:
         return createResponse(content=jsonify({"Error": "Invalid Request! Check headers for more information."}), status=400)
     
 #Create/Update    
-@app.route("/api/post/user/<string:field>", methods=['POST'])
+@app.route("/api/post/user/<string:field>", methods=['POST', 'OPTIONS'])
 def postReqUser(field):
     field.replace("/", "").strip()
 
@@ -125,21 +125,57 @@ def postReqUser(field):
         "student": create_student,
     }
 
-    try:
-        return createResponse(content=postReqRouter[field](
-            str(request.form['first_name']),
-            str(request.form['last_name']),
-            str(request.form['user_pass']),
-            int(request.form['school_id']),
-            str(request.form['email']),
-        ), corsHeaders="Post", status=200)
-    except TypeError:
-        return createResponse(content=jsonify({"Error": "The requested data could not be fetched due to a type mismatch."}), status=500)
-    except KeyError:
-        return createResponse(content=jsonify({"Error": "The keys for the requested operation do not match with required keys."}), status=400)
-    except:
-        return createResponse(content=jsonify({"Error": "Invalid Request! Check headers for more information."}), status=400)
+    if(request.method == "OPTIONS"):
+        try:
+            return createResponse(content=jsonify({"Status": "Preflight Success"}), status=200, corsHeaders="POST,OPTIONS", preflight=True)
+        except:
+            return createResponse(content=jsonify({"Error": "Preflight request failed!"}), status=400)
+    else:
+        data = request.get_json()
 
-    
+        try:
+            postReqRouter[field](
+                str(data['first_name']),
+                str(data['last_name']),
+                str(data['user_pass']),
+                str(data['school_id']),
+                str(data['email'])
+            )
+            return createResponse(content=jsonify({"Status": "Success"}), status=200, corsHeaders="POST,OPTIONS")
+        except TypeError:
+            return createResponse(content=jsonify({"Error": "The requested data could not be fetched due to a type mismatch."}), status=500)
+        except KeyError:
+            return createResponse(content=jsonify({"Error": "The keys for the requested operation do not match with required keys.", "Keys": data}), status=400)
+        except:
+            return createResponse(content=jsonify({"Error": "Invalid Request! Check headers for more information."}), status=400)
+
+@app.route("/api/post/account/<string:field>", methods=['POST', 'OPTIONS'])
+def postReqAccount(field):
+    field.replace("/", "").strip()
+
+    postReqRouter = {
+        "changePassword": change_password,
+    }
+
+    if(request.method == "OPTIONS"):
+        try:
+            return createResponse(content=jsonify({"Status": "Preflight Success"}), status=200, corsHeaders="POST,OPTIONS", preflight=True)
+        except:
+            return createResponse(content=jsonify({"Error": "Preflight request failed!"}), status=400)
+    else:
+        data = request.get_json()
+
+        try:
+            postReqRouter[field](
+                str(data['email']),
+                str(data['new_password'])
+            )
+            return createResponse(content=jsonify({"Status": "Success"}), status=200, corsHeaders="POST,OPTIONS")
+        except TypeError:
+            return createResponse(content=jsonify({"Error": "The requested data could not be fetched due to a type mismatch."}), status=500)
+        except KeyError:
+            return createResponse(content=jsonify({"Error": "The keys for the requested operation do not match with required keys.", "Keys": data}), status=400)
+        except:
+            return createResponse(content=jsonify({"Error": "Invalid Request! Check headers for more information."}), status=400)
 
 

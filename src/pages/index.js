@@ -15,7 +15,22 @@ export default function Home() {
   const reqHeaders = new Headers();
   reqHeaders.append("Accept", "application/json");
 
-  const { response, loaded } = LinkScholarAPI("/api/get/user/", "firstName", ["param", "Luke"]);
+  const newStudent = {
+    first_name: "Devon",
+    last_name: "Loy",
+    user_pass: "TEST_PASS",
+    school_id: "884594913",
+    email: "d_loy@uncg.edu"
+  }
+
+  const changePass = {
+    email: "d_loy@uncg.edu",
+    new_password: "Keiberunis12haodAK10-11231"
+  }
+
+  const { response, loaded } = LinkScholarAPI("/api/get/user/", "email", { param: "d_loy@uncg.edu" });
+  //const { response, loaded } = LinkScholarAPI("/api/post/user/", "student", newStudent, "POST");
+  //const { response, loaded } = LinkScholarAPI("/api/post/account/", "changePassword", changePass, "POST");
 
   useEffect(() => {
     setMessage(response);
