@@ -1,3 +1,4 @@
+
 import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
@@ -5,8 +6,9 @@ import styles from '@/styles/Home.module.css'
 import API from '@/backend/api/API'
 import { useEffect, useState } from 'react'
 import LinkScholarAPI from '@/backend/api/API'
+import Link from 'next/link';
 
-const inter = Inter({ subsets: ['latin'] })
+{/*const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   const [message, setMessage] = useState("");
@@ -43,3 +45,17 @@ export default function Home() {
     </div>
   )
 }
+*/}
+
+
+
+const HomePage = () => {
+  return (
+    <div>
+      <h1>Welcome LinkScholar!</h1>
+      <Link href="/signin">Sign In</Link>
+    </div>
+  )
+}
+
+export default HomePage
