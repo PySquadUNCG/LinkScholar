@@ -6,6 +6,9 @@
 .pnp.js
 
 # python env
+/src/backend/api/pyapi/Lib/site-packages/_distutils_hack/__pycache__
+/src/backend/api/pyapi/Lib/site-packages/__pycache__
+/src/backend/api/pyapi/__pycache__
 /src/backend/api/__pycache__
 /src/database/__pycache__
 /src/database/.idea
