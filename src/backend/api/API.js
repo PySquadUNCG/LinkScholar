@@ -1,45 +1,39 @@
 import { useEffect, useState } from 'react'
 
-export default function LinkScholarAPI(path, field, params = {}, restMethod = "GET", docType = "application/json", trigger = []) {
-    const [data, setData] = useState([]);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        const { url, content } = ConstructURL(path, field, params, restMethod);
-        if (url === "") {
-            return {
-                response: content,
-                loading: false
-            }
+export default async function LinkScholarAPI(path, field, params = {}, restMethod = "GET", docType = "application/json") {
+    const { url, content } = ConstructURL(path, field, params, restMethod);
+    if (url === "") {
+        return {
+            response: content,
+            loading: false
         }
-
-        const reqHeaders = new Headers();
-        reqHeaders.append("Accept", docType);
-
-        if (restMethod === "POST") {
-            reqHeaders.append("Content-Type", docType);
-        }
-
-        const options = {
-            method: restMethod,
-            headers: reqHeaders,
-            body: content,
-            mode: "cors"
-        }
-
-        fetch(url, options)
-            .then(res => res.json())
-            .then(data => {
-                setData(JSON.stringify(data));
-                setLoading(false);
-            })
-            .catch(err => console.error("ERROR FETCHING DATA FROM %s : %s", url, err))
-    }, trigger)
-
-    return {
-        response: data,
-        loaded: loading
     }
+
+    const reqHeaders = new Headers();
+    reqHeaders.append("Accept", docType);
+
+    if (restMethod === "POST") {
+        reqHeaders.append("Content-Type", docType);
+    }
+
+    const options = {
+        method: restMethod,
+        headers: reqHeaders,
+        body: content,
+        mode: "cors"
+    }
+
+    const resp = await fetch(url, options)
+        .then(res => res.json())
+        .then(data => {
+            return {
+                response: data,
+                loading: true
+            }
+        })
+        .catch(err => console.error("ERROR FETCHING DATA FROM %s : %s", url, err))
+
+    return resp
 }
 
 /**
