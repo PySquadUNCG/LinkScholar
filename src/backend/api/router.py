@@ -64,8 +64,8 @@ def testMultiRouter(field):
         return createResponse(content=jsonify({"Error": "The requested data could not be fetched due to a type mismatch."}), status=500)
     except KeyError:
         return createResponse(content=jsonify({"Error": "The keys for the requested operation do not match with required keys."}), status=400)
-    except:
-        return createResponse(content=jsonify({"Error": "Invalid Request! Check headers for more information."}), status=400)
+    except Exception as e:
+            return createResponse(content=jsonify({"Error": str(e) + "."}), status=400)
 
 #Get User by field.
 #Format for request is "(root)/api/get/user/<field>?param=<param>/".
@@ -90,8 +90,8 @@ def getReqUser(field):
         return createResponse(content=jsonify({"Error": "The requested data could not be fetched due to a type mismatch."}), status=500)
     except KeyError:
         return createResponse(content=jsonify({"Error": "The keys for the requested operation do not match with required keys.", "Keys": request.args.to_dict()}), status=400)
-    except:
-        return createResponse(content=jsonify({"Error": "Invalid Request! Check headers for more information."}), status=400)
+    except Exception as e:
+        return createResponse(content=jsonify({"Error": str(e) + "."}), status=400)
     
 #Get Field of Study by ID.
 @app.route("/api/get/tag/<string:field>", methods=['GET'])
@@ -112,8 +112,8 @@ def getReqFieldOfStudy(field):
         return createResponse(content=jsonify({"Error": "The requested data could not be fetched due to a type mismatch."}), status=500)
     except KeyError:
         return createResponse(content=jsonify({"Error": "The keys for the requested operation do not match with required keys.", "Keys": request.args.to_dict()}), status=400)
-    except:
-        return createResponse(content=jsonify({"Error": "Invalid Request! Check headers for more information."}), status=400)
+    except Exception as e:
+        return createResponse(content=jsonify({"Error": str(e) + "."}), status=400)
     
 #Create/Update    
 @app.route("/api/post/user/<string:field>", methods=['POST', 'OPTIONS'])
@@ -146,8 +146,8 @@ def postReqUser(field):
             return createResponse(content=jsonify({"Error": "The requested data could not be fetched due to a type mismatch."}), status=500)
         except KeyError:
             return createResponse(content=jsonify({"Error": "The keys for the requested operation do not match with required keys.", "Keys": data}), status=400)
-        except:
-            return createResponse(content=jsonify({"Error": "Invalid Request! Check headers for more information."}), status=400)
+        except Exception as e:
+            return createResponse(content=jsonify({"Error": str(e) + "."}), status=400)
 
 @app.route("/api/post/account/<string:field>", methods=['POST', 'OPTIONS'])
 def postReqAccount(field):
@@ -175,7 +175,7 @@ def postReqAccount(field):
             return createResponse(content=jsonify({"Error": "The requested data could not be fetched due to a type mismatch."}), status=500)
         except KeyError:
             return createResponse(content=jsonify({"Error": "The keys for the requested operation do not match with required keys.", "Keys": data}), status=400)
-        except:
-            return createResponse(content=jsonify({"Error": "Invalid Request! Check headers for more information."}), status=400)
+        except Exception as e:
+            return createResponse(content=jsonify({"Error": str(e) + "."}), status=400)
 
 
