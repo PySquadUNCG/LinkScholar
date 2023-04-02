@@ -6,6 +6,7 @@
 .pnp.js
 
 # python env
+.idea
 /src/backend/api/__pycache__
 /src/database/__pycache__
 /src/database/.idea
