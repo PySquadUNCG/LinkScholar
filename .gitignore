@@ -7,8 +7,8 @@
 
 # python env
 /src/backend/api/__pycache__
-/src/database/__pycache__
-/src/database/.idea
+/src/backend/database/__pycache__
+/src/backend/database/.idea
 
 # testing
 /coverage
