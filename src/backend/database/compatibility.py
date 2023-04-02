@@ -1,46 +1,6 @@
-# Define the attributes for the users
-
-# Instead of hard coding a student, we need to take a student by using a method from database.py
-student = {
-    "school_id": "123456789",
-    "Field_of_Study": ["Algorithms and Theory of Computing", "Security and Cryptography"]
-           }
-
-# instead of hard coding the professors here, call all professors using a method from database.py
-professors = [
-    {
-        "school_id": "123456789",
-        "Field_of_Study": ["Algorithms and Theory of Computing", "Security and Cryptography"]
-    },
-    {
-        "school_id": "123456788",
-        "Field_of_Study": ["Algorithms and Theory of Computing", "Data Science and Machine Learning",
-                           "Database Systems", "Artificial Intelligence"]
-    },
-    {
-        "school_id": "123456787",
-        "Field_of_Study": ["Database Systems", "Online Social Networks"]
-    },
-    {
-        "school_id": "123456786",
-        "Field_of_Study": ["Data Science and Machine Learning", "Image Processing"]
-    },
-    {
-        "school_id": "123456785",
-        "Field_of_Study": ["Networking", "Online Social Networks", "Security and Cryptography"]
-    },
-    {
-        "school_id": "123456784", "Field_of_Study": ["Extended Reality"]
-    },
-    {
-        "school_id": "123456783",
-        "Field_of_Study": ["Data Science and Machine Learning"]
-    },
-    {
-        "school_id": "123456782",
-        "Field_of_Study": ["Data Science and Machine Learning", "Networking", "Security and Cryptography"]
-    }
-]
+from database import update_match
+from database import get_user_fields_of_study
+from database import get_teachers_fields_of_study
 
 
 # Define the compatibility function
@@ -54,37 +14,43 @@ def calculate_compatibility(user1, user2):
     return compatibility_score
 
 
-compMap = {}
+def compute_compatibility(school_id):
+    # Define the attributes for the users
+    student = get_user_fields_of_study(school_id)
+    professors = get_teachers_fields_of_study()
+    comp_map = {}
 
-# Calculate the compatibility between each student and professor
+    # Calculate the compatibility between each student and professor
 
-for professor_attributes in professors:
-    professor_id = professor_attributes["school_id"]
-    professor_fos = professor_attributes["Field_of_Study"]
-    compatibility_score = calculate_compatibility(student["Field_of_Study"], professor_fos)
+    for professor_attributes in professors:
+        professor_id = professor_attributes["school_id"]
+        professor_fos = professor_attributes["Field_of_Study"]
+        compatibility_score = calculate_compatibility(student["Field_of_Study"], professor_fos)
 
-    myList = None
+        my_list = None
 
-    if compatibility_score not in compMap:
-        myList = []
-        compMap[compatibility_score] = myList
-    else:
-        myList = compMap[compatibility_score]
-    myList.append(professor_id)
+        if compatibility_score not in comp_map:
+            my_list = []
+            comp_map[compatibility_score] = my_list
+        else:
+            my_list = comp_map[compatibility_score]
+        my_list.append(professor_id)
 
-# print(compMap)
-sorted_dict = dict(sorted(compMap.items(), key=lambda x: x[0], reverse=True))
-# print(sorted_dict.items())
+    # print(comp_map)
+    sorted_dict = dict(sorted(comp_map.items(), key=lambda x: x[0], reverse=True))
+    # print(sorted_dict.items())
 
-result = []
-num = 0
+    result = []
+    num = 0
 
-for key, value in sorted_dict.items():
-    for x in value:
-        result.append(x)
-        num += 1
+    for key, value in sorted_dict.items():
+        for x in value:
+            result.append(x)
+            num += 1
+            if num == 2:
+                break
         if num == 2:
             break
-    if num == 2:
-        break
-print(result)
+    # Saves the results to db before returning
+    update_match(school_id, result)
+    return result
