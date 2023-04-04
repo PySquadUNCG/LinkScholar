@@ -47,3 +47,6 @@ from compatibility import*
 
 #
 # print(get_match_id("888319834"))
+
+
+# print(get_id('123456789'))

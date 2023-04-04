@@ -200,6 +200,11 @@ def get_match_id(school_id):
     return json.dumps(match_ids)
 
 
+def get_id(school_id):
+    user = User.objects.get(school_id=school_id)
+    return json.dumps(str(user.id))
+
+
 if get_all_fields_of_study().count() == 0:
     create_field_of_study(0, "Algorithms and Theory of Computing")
     create_field_of_study(1, "Data Science and Machine Learning")
