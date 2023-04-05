@@ -14,7 +14,7 @@ sys.path.append('../')
 #Import routed functions.
 from database.testPrompt import *
 from database.database import *
-from database.compatibility import compute_compatibility
+
 
 app = Flask(__name__)
 
@@ -180,11 +180,11 @@ def postReqAccount(field):
             return createResponse(content=jsonify({"Error": str(e) + "."}), status=400)
         
 @app.route("/api/post/match/<string:field>", methods=['POST', 'OPTIONS'])
-def postReqAccount(field):
+def postReqMatch(field):
     field.replace("/", "").strip()
 
     postReqRouter = {
-        "getUserMatch": compute_compatibility,
+        "getUserMatch": " ",
     }
 
     if(request.method == "OPTIONS"):
