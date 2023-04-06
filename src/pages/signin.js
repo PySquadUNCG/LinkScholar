@@ -1,9 +1,10 @@
 import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import LinkScholarAPI from '../backend/api/API';
 const SignInPage = () => {
-
+const router = useRouter();
 
   const [formData, setFormData] = useState({
     firstName: '',
@@ -24,6 +25,7 @@ const SignInPage = () => {
   };
 
   const handleSubmit = async (event) => {
+    
     if (formData.password === formData.confPassword) {
       console.log('Form submitted:', formData);
       event.preventDefault();
@@ -41,7 +43,9 @@ const SignInPage = () => {
       if (Object.keys(response)[0] === "Error") {
         alert(response[Object.keys(response)[0]]);
       } else {
-        alert("Account created successfully!")
+        
+       alert("Account created successfully!")
+       router.push("/login");
       }
 
     } else {
@@ -60,16 +64,21 @@ const SignInPage = () => {
 
   return (
     <>
-      <div className='jb'>
+      <div className='jb'> 
+      
         <div class="topnav">
           <a class="active">Sign Up</a>
           <Link href="/login">Login</Link>
-        </div><Head>
+        </div>
+
+        <Head>
           <title>LinkScholar-Sign up</title>
           <Link
             href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
             rel="stylesheet" />
+            
         </Head>
+       
         <div class="signup-box">
           <h1>Welcome To </h1>
           <div class="icon"><img src="/LinkScholar.png" alt="My Image" /></div>
