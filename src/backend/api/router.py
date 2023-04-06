@@ -167,11 +167,11 @@ def postReqAccount(field):
         data = request.get_json()
 
         try:
-            postReqRouter[field](
+            query = postReqRouter[field](
                 str(data['email']),
                 str(data['password'])
             )
-            return createResponse(content=jsonify({"Status": "Success"}), status=200, corsHeaders="POST,OPTIONS")
+            return createResponse(content=jsonify({"Status": "Success", "Data": query }), status=200, corsHeaders="POST,OPTIONS")
         except TypeError:
             return createResponse(content=jsonify({"Error": "The requested data could not be fetched due to a type mismatch."}), status=500)
         except KeyError:
