@@ -205,6 +205,19 @@ def get_id(school_id):
     return json.dumps(str(user.id))
 
 
+def get_teacher_information(school_id):
+    teacher = User.objects(school_id=school_id).only('first_name', 'last_name', 'email').first()
+    if teacher:
+        teacher_info = {
+            'first_name': teacher.first_name,
+            'last_name': teacher.last_name,
+            'email': teacher.email
+        }
+        return json.dumps(teacher_info)
+    else:
+        return None
+
+
 if get_all_fields_of_study().count() == 0:
     create_field_of_study(0, "Algorithms and Theory of Computing")
     create_field_of_study(1, "Data Science and Machine Learning")
