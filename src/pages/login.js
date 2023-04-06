@@ -2,9 +2,12 @@ import React, { useEffect,useState } from 'react'
 import Link from 'next/link';
 import Head from 'next/head';
 import LinkScholarAPI from '../backend/api/API';
+import { useRouter } from 'next/router'
 
 
 const LogInPage = () => {
+  const router = useRouter();
+
   const [formData, setFormData] = useState({
     studentID: '',
     password: '',
@@ -25,17 +28,18 @@ const LogInPage = () => {
 
   const handleSubmit = async (event) => {
     
-    const {response,loaded} = await LinkScholarAPI("/api/user/get/", "schoolID", {studentID: formData.studentID});
-    console.log(response);
-    if (studentID === 9) {
-      
+    const {response,loaded} = await LinkScholarAPI("/api/get/user/", "schoolID", {param: formData.studentID});
+      console.log(response);
+
+      if(formData.studentID===9){
      
       console.log('Form submitted:', formData);
       event.preventDefault(); 
       router.push("/homepage");
     }else {
-      alert("Username/Password is Incorrect! Try again.")
+      alert("Id/Password is Incorrect, Try Again!");
     }
+    
   };
 
 
