@@ -40,6 +40,7 @@ body{
   background-color: #0f2044;
   color:#0f2044 ;
   font-family: "Roboto", sans-serif;
+  height: 1500px;
 }
 
 .signup-box {
@@ -212,13 +213,13 @@ form input {
 
 .indent{
   margin-top: 10px;
-  margin-left: 60px;
-  color: #49c1a2;
+  margin-left: 65px;
+  color: #0f2044;
 }
 .indent-2{
   margin-top: 10px;
-  margin-left: 60px;
-  color: #49c1a2;
+  margin-left: 70px;
+  color: #0f2044;
 }
 p {
   text-align: center;

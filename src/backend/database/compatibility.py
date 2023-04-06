@@ -1,6 +1,7 @@
-from database import update_match
-from database import get_user_fields_of_study
-from database import get_teachers_fields_of_study
+
+from database.database import get_user_fields_of_study
+from database.database import get_teachers_fields_of_study
+from database.database import update_match
 
 
 # Define the compatibility function
@@ -52,5 +53,6 @@ def compute_compatibility(school_id):
         if num == 2:
             break
     # Saves the results to db before returning
+    
     update_match(school_id, result)
     return result

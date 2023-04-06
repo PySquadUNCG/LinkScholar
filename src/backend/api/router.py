@@ -14,7 +14,7 @@ sys.path.append('../')
 #Import routed functions.
 from database.testPrompt import *
 from database.database import *
-from database.compatibility import compute_compatibility
+from database.compatibility import *
 
 app = Flask(__name__)
 
@@ -156,6 +156,7 @@ def postReqAccount(field):
 
     postReqRouter = {
         "changePassword": change_password,
+        "login": compare_password
     }
 
     if(request.method == "OPTIONS"):
@@ -167,11 +168,11 @@ def postReqAccount(field):
         data = request.get_json()
 
         try:
-            postReqRouter[field](
+            query = postReqRouter[field](
                 str(data['email']),
-                str(data['new_password'])
+                str(data['password'])
             )
-            return createResponse(content=jsonify({"Status": "Success"}), status=200, corsHeaders="POST,OPTIONS")
+            return createResponse(content=jsonify({"Status": "Success", "Data": query }), status=200, corsHeaders="POST,OPTIONS")
         except TypeError:
             return createResponse(content=jsonify({"Error": "The requested data could not be fetched due to a type mismatch."}), status=500)
         except KeyError:
@@ -180,7 +181,7 @@ def postReqAccount(field):
             return createResponse(content=jsonify({"Error": str(e) + "."}), status=400)
         
 @app.route("/api/post/match/<string:field>", methods=['POST', 'OPTIONS'])
-def postReqAccount(field):
+def postReqMatch(field):
     field.replace("/", "").strip()
 
     postReqRouter = {
@@ -196,10 +197,10 @@ def postReqAccount(field):
         data = request.get_json()
 
         try:
-            postReqRouter[field](
+            query = postReqRouter[field](
                 str(data['school_id'])
             )
-            return createResponse(content=jsonify({"Status": "Success"}), status=200, corsHeaders="POST,OPTIONS")
+            return createResponse(content=jsonify({"Status": "Success", "Data": query }), status=200, corsHeaders="POST,OPTIONS")
         except TypeError:
             return createResponse(content=jsonify({"Error": "The requested data could not be fetched due to a type mismatch."}), status=500)
         except KeyError:
