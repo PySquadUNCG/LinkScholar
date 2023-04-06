@@ -155,6 +155,7 @@ def postReqAccount(field):
 
     postReqRouter = {
         "changePassword": change_password,
+        "login": compare_password
     }
 
     if(request.method == "OPTIONS"):
@@ -168,7 +169,7 @@ def postReqAccount(field):
         try:
             postReqRouter[field](
                 str(data['email']),
-                str(data['new_password'])
+                str(data['password'])
             )
             return createResponse(content=jsonify({"Status": "Success"}), status=200, corsHeaders="POST,OPTIONS")
         except TypeError:
