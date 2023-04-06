@@ -185,7 +185,7 @@ def postReqMatch(field):
     field.replace("/", "").strip()
 
     postReqRouter = {
-        "getUserMatch": "compute_compatibility",
+        "getUserMatch": compute_compatibility,
     }
 
     if(request.method == "OPTIONS"):
