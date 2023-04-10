@@ -3,11 +3,31 @@ import Link from 'next/link';
 import Head from 'next/head'
 import axios from "axios";
 import styled from 'styled-components';
-import { Box } from '@chakra-ui/react';
+import { Avatar, Box } from '@chakra-ui/react';
 import Image from "next/image";
+import Feed from "./componets/feed"
+import MatchFeed from "./componets/matchfeed"
+import { useRouter } from 'next/router';
+import LinkScholarAPI from '../backend/api/API';
 
 const HomePage = () => {
+    const router = useRouter();
+    const {email} = router.query;
 
+   
+    const [Avatar, setAvatar] = useState({
+       img: "avatar.png"
+    
+      });
+
+      useEffect(() => {
+
+        const Avatar = "";
+        
+    
+    
+      }, [Avatar]);
+      
 
     return (
         <>
@@ -20,26 +40,38 @@ const HomePage = () => {
             />
 </Head>
 <div className='json'>
-<body >
-<header id = "header">
-    <Link href = "/profile"> <a className="header_link">Profile</a></Link>
-    <Link href = "/connect"> <a className = "header_link">Connect</a></Link>
-    <img class = 'logo' src="/LinkScholar.png" alt="My Image" />
-    <Link href = "/settings"> <a className="header_link">Settings</a></Link>
-    <Link href = "/login"> <a className= "header_link" id = "signout">Sign Out</a></Link>
-</header>
 
-<h1 id = "heading">Homepage</h1>
+<div className='topnav2'>
+    <Link className="header_link2" href = "/profile"> Profile</Link>
+    <Link className="header_link2" href = "/connect"> Connect</Link>
+    <img class = 'logo2' src="/LinkScholar.png" alt="My Image" />
+    <Link className= 'student-avatar-link' href = "/profile"><img className = 'student-avatar' src={Avatar.img} alt="Avatar" /></Link>
+    <Link className="header_link2" href = "/settings"> Settings</Link>
+    <Link className="header_link2" href = "/login"> Sign Out</Link>
+    <input type="text" placeholder ="Search for Professor"></input>
+    
+</div>
+<div className='home-boxes'>
+<div className = "heading2">Welcome {email}!</div>
+<div className='match-box'>
+    <MatchFeed email = {email}/>
+  
+   
+</div>
+<div className='feed-box'>
+<Feed email = {email}></Feed>
 
-<button id = "uncg" type = "button">Go</button>
+</div>
+</div>
+
 
 <footer id = "footer">
-    <Link href = "/about"> <a className = "footer_link">About |</a></Link>
-    <Link href = "/support"> <a className="footer_link">Support |</a></Link>
-    <Link href = "forgotusrname"> <a className="footer_link">Forgot Username/Password</a></Link>
+    <Link className = "footer_link" href = "/about"> About |</Link>
+    <Link className = "footer_link" href = "/support"> Support |</Link>
+    <Link className = "footer_link" href = "forgotusrname"> Forgot Username/Password</Link>
 
 </footer>
-</body>
+
 </div>
 </>
 

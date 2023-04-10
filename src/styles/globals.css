@@ -265,13 +265,246 @@ p {
   background-color: #ffb71b;
   color: white;
 }
+.topnav2 {
+  background-color: #083456;
+  overflow: hidden;
+}
+/* homepage css -Jordan*/
+.topnav2 a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 100%;
+}
 
+/* Topnav Change the color of links on hover */
+.topnav2 a:hover {
+  background-color: #ffb71b;
+  color: black;
+}
+
+/* Topnav Add a color to the active/current link */
+.topnav2 a.active {
+  background-color: #ffb71b;
+  color: white;
+}
+/* Style the search box inside the navigation bar */
+.topnav2 input[type=text] {
+  float: right;
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-right: 20px;
+    font-size: 100%;
+
+}
+
+/* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
+@media screen and (max-width: 600px) {
+  .topnav2 a, .topnav2 input[type=text] {
+    float: center;
+    display: block;
+    text-align: left;
+    width: 125px;
+    margin: 0;
+    padding: 14px;
+  }
+  .topnav2 input[type=text] {
+    border: 1px solid #ccc;
+  }
+  .student-avatar {
+    width: 100px;
+    height: 100px;
+    margin-left: 5%;
+    float: left;
+    position: relative;
+
+    text-align: left;
+  }
+  
+}
+.logo2{
+  width: 10vw;
+  height:  4vh;
+  margin-top: 12px;
+  margin-left: 125px;
+  top: 25%;
+  text-align: left;
+}
+.student-avatar {
+  width: 10%;
+  height: 3%;
+  margin-left: 5%;
+  float: center;
+  position: relative;
+  top: 25%;
+  text-align: left;
+}
+.heading2{
+
+margin-right: 0px;
+font-weight: 400;
+font-size: 25px;
+margin-left: 475px;
+margin-top: 20px ;
+margin-bottom: -30px;
+display:flex;
+}
+.feed-box{
+  width: 400px;
+    height: 600px;
+    margin-right: 400px;
+    margin-left: 450px;
+    margin-top: 50px;
+    background-color: #555054;
+    opacity: 100%;
+    float: center;
+}
+.match-box{
+  width: 300px;
+  height: 500px; 
+  margin-left: 40px;
+  margin-right: 100px;
+  margin-top: 0px;
+  background-color: #263149;
+  opacity: 100%;
+  float: left;
+  border-radius: 2%;
+  
+}
+.match-box:hover{
+  width: 270px;
+  height: 500px; 
+  margin-left: 40px;
+  margin-right: 100px;
+  margin-top: 0px;
+  background-color: #263149;
+  opacity: 100%;
+  float: left;
+  border-radius:2%;
+  border-width: 5px;
+  border-color: #555054;
+  border-style: solid;
+  
+  
+}
+.profile-box{
+  opacity: 40%;
+}
+a.student-avatar-link {
+  padding: 0px 0px;
+  margin: 0px;
+}
+.match-input{
+  width: 150px;
+  height:  20px;
+  margin-left: 55px;
+  margin-top: 20px;
+  font-size: 10px;
+}
+.feed-input{
+  width: 315px;
+  height: 25px;
+  margin-left: 40px;
+  margin-top: 20px;
+  font-size: 10px;
+  text-align: left;
+  text-overflow: clip;
+}
+.feed-input::placeholder{
+  text-align: center;
+}
+.post-author{
+  margin-left: 10px;
+  color: black
+}
+.post-feed{
+  color: black;
+  margin-top: -10px;
+}
+/*end homepage css*/
+/* component css*/ 
+.post-button{
+  float: left;
+}
+.post-image{
+  float: left;
+  width: 20px;
+  margin-left: 10px;
+
+}
+.post-box{
+  background-color: white;
+  border-radius: 15px;
+
+}
+.post-box:hover{
+  border-color: black;
+  border-radius: 10px;
+  scale: 115%;
+  background-color: whitesmoke;
+  opacity: 80%;
+}
+.post-share-button{
+  float: right;
+  margin-right: 45px;
+  margin-top: 10px;
+  
+  background-color: whitesmoke;
+  justify-content: right;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+  font-size: .7rem;
+  font-weight: 600;
+}
+.post-share-button:hover{
+  float: right;
+  margin-right: 45px;
+  margin-top: 10px;
+  
+  background-color: rgb(205, 204, 204);
+  justify-content: right;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+ 
+  font-weight: 600;
+}
+.match-image{
+  float: left;
+  width: 20px;
+  margin-left: 10px;
+
+}
+.match-post-box{
+  background-color: white;
+  border-radius: 10px;
+  width: 95%;
+  margin-left: 5px;
+}
+.match-post-box:hover{
+  border-color: black;
+  border-radius: 12px;
+  scale: 115%;
+  background-color: whitesmoke;
+  opacity: 80%;
+}
+.match-refresh{
+  margin-left: 10px;
+  margin-top: -10px;
+}
+/* end component css*/
 /*Jason CSS*/ 
 
 .json {
   background-color: #bec0c2;
   color: #332e2e;
   font-family: "Lucida Sans";
+  height: 1080px;
 }
 
 #header{
@@ -327,7 +560,6 @@ p {
 .logo{
   width: 20%;
   height : 50%;
-
   margin-left: 10%;
   position: relative;
   top: 25%;

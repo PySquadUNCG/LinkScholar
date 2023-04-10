@@ -11,7 +11,7 @@ const LogInPage = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
-
+    student_id:'',
   });
   const [formFilled, setFormFilled] = useState(false);
 
@@ -33,7 +33,10 @@ const LogInPage = () => {
     if (response["Data"] === true) {
       console.log('Form submitted:', formData);
       event.preventDefault();
-      router.push("/homepage");
+      router.push({
+        pathname: "/homepage",
+      query: {email: formData.email},
+    });
     } else {
       alert("Id/Password is Incorrect, Try Again!");
     }
