@@ -11,7 +11,7 @@ const LogInPage = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
-    student_id:'',
+    
   });
   const [formFilled, setFormFilled] = useState(false);
 

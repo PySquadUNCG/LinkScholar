@@ -277,6 +277,7 @@ p {
   padding: 14px 16px;
   text-decoration: none;
   font-size: 100%;
+  margin-top: 18px;
 }
 
 /* Topnav Change the color of links on hover */
@@ -293,17 +294,18 @@ p {
 /* Style the search box inside the navigation bar */
 .topnav2 input[type=text] {
   float: right;
-    padding: 6px;
-    border: none;
-    margin-top: 8px;
-    margin-bottom: 8px;
-    margin-right: 20px;
-    font-size: 100%;
+  padding: 6px;
+  border: none;
+  margin-top: -19px;
+  /* margin-top: 43px; */
+  margin-bottom: 21px;
+  margin-right: 20px;
+  font-size: 100%;
 
 }
 
 /* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1220px) {
   .topnav2 a, .topnav2 input[type=text] {
     float: center;
     display: block;
@@ -324,15 +326,44 @@ p {
 
     text-align: left;
   }
-  
+  .logo2{
+    width: 100px;
+    margin-top: 51px;
+    margin-left: -473px;
+    /* top: 25%; */
+    /* text-align: left; */
+    margin-bottom: -28px;
+  }
+  .student-avatar {
+    width: 10%;
+    height: 3%;
+    margin-left: 5%;
+    float: center;
+    position: relative;
+    top: 25%;
+    text-align: left;
+  }
+  .nav-input-search{
+    float: right;
+      /* margin-left: -29px; */
+      margin-right: -0px;
+      background-color: #ffb71b;
+      width: 75px;
+      height: 25px;
+      margin-top: -16px;
+  }
+  .nav-search{
+    margin-left: 20px;
+    margin-right: 40px;
+  }
 }
 .logo2{
-  width: 10vw;
-  height:  4vh;
-  margin-top: 12px;
-  margin-left: 125px;
-  top: 25%;
-  text-align: left;
+  width: 100px;
+  margin-top: 51px;
+  margin-left: -473px;
+  /* top: 25%; */
+  /* text-align: left; */
+  margin-bottom: -28px;
 }
 .student-avatar {
   width: 10%;
@@ -373,10 +404,11 @@ display:flex;
   opacity: 100%;
   float: left;
   border-radius: 2%;
-  
+  opacity: 80%;
+  transition: .2s;
 }
 .match-box:hover{
-  width: 270px;
+  width: 300px;
   height: 500px; 
   margin-left: 40px;
   margin-right: 100px;
@@ -388,7 +420,7 @@ display:flex;
   border-width: 5px;
   border-color: #555054;
   border-style: solid;
-  
+  opacity: 100%;
   
 }
 .profile-box{
@@ -396,14 +428,19 @@ display:flex;
 }
 a.student-avatar-link {
   padding: 0px 0px;
-  margin: 0px;
+  margin: 0;
+  scale: 65%;
+  width: 489px;
 }
 .match-input{
   width: 150px;
   height:  20px;
   margin-left: 55px;
-  margin-top: 20px;
+  margin-top: -20px;
   font-size: 10px;
+  margin-bottom: 20px;
+  margin-right: 5px;
+
 }
 .feed-input{
   width: 315px;
@@ -424,6 +461,19 @@ a.student-avatar-link {
 .post-feed{
   color: black;
   margin-top: -10px;
+}
+.nav-input-search{
+  float: right;
+    /* margin-left: -29px; */
+    margin-right: -320px;
+    background-color: #ffb71b;
+    width: 75px;
+    height: 25px;
+    margin-top: -16px;
+}
+.nav-search{
+  margin-left: 20px;
+  margin-right: 40px;
 }
 /*end homepage css*/
 /* component css*/ 
@@ -478,6 +528,7 @@ a.student-avatar-link {
   float: left;
   width: 20px;
   margin-left: 10px;
+  margin-right: 5px;
 
 }
 .match-post-box{
@@ -485,6 +536,7 @@ a.student-avatar-link {
   border-radius: 10px;
   width: 95%;
   margin-left: 5px;
+  transition: .2s;
 }
 .match-post-box:hover{
   border-color: black;
@@ -496,6 +548,18 @@ a.student-avatar-link {
 .match-refresh{
   margin-left: 10px;
   margin-top: -10px;
+}
+
+  
+.match-input-search{
+  background-color: #ffb71b;
+  
+}
+.your-matches{
+  font-weight: 400;
+  color: #ffb71b;
+  margin-top: -10px;
+  font-size: 1.5rem;
 }
 /* end component css*/
 /*Jason CSS*/ 

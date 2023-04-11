@@ -13,7 +13,34 @@ import LinkScholarAPI from '../backend/api/API';
 const HomePage = () => {
     const router = useRouter();
     const {email} = router.query;
+    const [users, setUsers] = useState([]);
+    const [searchQuery, setSearchQuery] = useState("");
 
+    const handleSearchInputChange = (event) => {
+        setSearchQuery(event.target.value);
+    }
+
+    const postsData = users.slice(0, 5).map((user) => ({
+        authorFirstName: user.first_name,
+        authorLastName: user.last_name,
+        content: user.email
+    }));
+
+
+    const getMatches = async () => {
+        const { response, loaded } = await LinkScholarAPI("/api/get/user/", "all", "GET");
+        if (response !== "") {
+            // Filter the response based on the search query
+            const filteredUsers = response.filter((user) => {
+                const fullName = `${user.first_name} ${user.last_name}`;
+                return (
+                    fullName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    user.email.toLowerCase().includes(searchQuery.toLowerCase())
+                );
+            });
+            setUsers(filteredUsers);
+        }
+    }
    
     const [Avatar, setAvatar] = useState({
        img: "avatar.png"
@@ -48,8 +75,15 @@ const HomePage = () => {
     <Link className= 'student-avatar-link' href = "/profile"><img className = 'student-avatar' src={Avatar.img} alt="Avatar" /></Link>
     <Link className="header_link2" href = "/settings"> Settings</Link>
     <Link className="header_link2" href = "/login"> Sign Out</Link>
-    <input type="text" placeholder ="Search for Professor"></input>
-    
+    <div className='search-container'>
+    <input className='nav-search'
+                    type="text"
+                    value={searchQuery}
+                    onChange={handleSearchInputChange}
+                    placeholder ="Search "></input>
+                    
+                    </div>
+    <button className='nav-input-search' onClick={getMatches}>Search</button>
 </div>
 <div className='home-boxes'>
 <div className = "heading2">Welcome {email}!</div>
