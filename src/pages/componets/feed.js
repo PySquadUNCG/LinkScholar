@@ -21,7 +21,7 @@ const Feed = ({email}) => {
          </Post>
          
       ))}
-      <button className='post-button'>post</button>
+     
     </PostLayout>
   );
 };
