@@ -207,5 +207,22 @@ def postReqMatch(field):
             return createResponse(content=jsonify({"Error": "The keys for the requested operation do not match with required keys.", "Keys": data}), status=400)
         except Exception as e:
             return createResponse(content=jsonify({"Error": str(e) + "."}), status=400)
+        
+@app.route("/api/get/match/<string:field>", methods=['GET'])
+def getReqUser(field):
+    field.replace("/", "").strip()
+
+    getReqRouter = {
+        "getUserMatch": compute_compatibility,
+    }
+
+    try:
+        return createResponse(content=getReqRouter[field](str(request.args.get('param', ''))).to_json(), status=200)
+    except TypeError:
+        return createResponse(content=jsonify({"Error": "The requested data could not be fetched due to a type mismatch."}), status=500)
+    except KeyError:
+        return createResponse(content=jsonify({"Error": "The keys for the requested operation do not match with required keys.", "Keys": request.args.to_dict()}), status=400)
+    except Exception as e:
+        return createResponse(content=jsonify({"Error": str(e) + "."}), status=400)
 
 
