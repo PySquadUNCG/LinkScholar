@@ -27,6 +27,7 @@ body{
 ::-webkit-scrollbar-thumb {
   background: #ffb71b;
   border-radius: 12px;
+  transition: .2s;
 }
 
 /* Handle on hover */
@@ -199,6 +200,7 @@ form input {
   background-color: #a00c30;
   color: white;
   font-size: 1rem;
+  transition: .2s
 }
 .submit-2:hover {
   width: 320px;
@@ -252,6 +254,7 @@ p {
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
+  transition: .2s;
 }
 
 /* Change the color of links on hover */
@@ -380,10 +383,10 @@ p {
 margin-right: 0px;
 font-weight: 400;
 font-size: 150%;
-margin-left: 41%;
+margin-left: 40%;
 margin-top: 2% ;
 margin-bottom: -2%;
-display:flex;
+float: center;
 }
 .feed-box{
   width: 25%;
@@ -392,8 +395,25 @@ display:flex;
     margin-left: 38.8%;
     margin-top: 3%;
     background-color: #555054;
+    opacity: 80%;
+    float: center;
+    transition: .2s;
+    border-radius: 1rem;
+}
+.feed-box:hover{
+  width: 26%;
+    height: 46rem;
+    margin-right: 30%;
+    margin-left: 38.8%;
+    margin-top: 3%;
+    background-color: #555054;
     opacity: 100%;
     float: center;
+    border-radius: 2rem;
+    border-width: 3%;
+    border-color: #263149;
+    border-style: solid;
+   
 }
 .match-box{
   width: 35%;
@@ -401,7 +421,7 @@ display:flex;
   margin-left: 2%;
   margin-top: 0px;
   background-color: #263149;
-  opacity: 100%;
+
   float: left;
   border-radius: 2%;
   opacity: 80%;
@@ -413,7 +433,7 @@ display:flex;
   margin-left: 1.8%;
   margin-top: 0px;
   background-color: #263149;
-  opacity: 100%;
+
   float: left;
   border-radius:2%;
   border-width: 3%;
@@ -421,6 +441,29 @@ display:flex;
   border-style: solid;
   opacity: 100%;
   
+}
+.request-tojoin-match{
+  float: right;
+  width: 3rem;
+  height: 2rem;
+  font-size: 50%;
+  margin-top: -9.9%;
+  margin-right: 3%;
+  background-color: #0f2044;
+  color: #fdba13;
+  transition: .2s;
+}
+.request-tojoin-match:hover{
+  float: right;
+  width: 3rem;
+  height: 2rem;
+  scale: 110%;
+  font-size: 50%;
+  margin-top: -9.9%;
+  margin-right: 3%;
+  opacity: 100%;
+  background-color: #0f2044;
+  color: #fdba13;
 }
 .profile-box{
   opacity: 40%;
@@ -431,6 +474,7 @@ a.student-avatar-link {
   scale: 65%;
   width: 45%;
 }
+
 .match-input{
   width: 70%;
   height:  1.3rem;
@@ -491,6 +535,7 @@ a.student-avatar-link {
   background-color: white;
   border-radius: 1rem;
   transition: .2s;
+  scale: 95%;
 
 }
 .post-box:hover{

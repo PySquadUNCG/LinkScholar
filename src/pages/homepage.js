@@ -81,9 +81,9 @@ const HomePage = () => {
                     value={searchQuery}
                     onChange={handleSearchInputChange}
                     placeholder ="Search "></input>
-                    
+                    <button className='nav-input-search' onClick={getMatches}>Search</button>
                     </div>
-    <button className='nav-input-search' onClick={getMatches}>Search</button>
+    
 </div>
 <div className='home-boxes'>
 <div className = "heading2">Welcome {email}!</div>

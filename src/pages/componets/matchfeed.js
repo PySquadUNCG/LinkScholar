@@ -2,7 +2,7 @@ import MatchLayout from './matchlayout';
 import MatchPost from './matchpost';
 import LinkScholarAPI from '../../backend/api/API';
 import React, { useEffect, useState } from "react";
-
+//functionality of match box/ match feed
 const MatchFeed = ({ email }) => {
     const [users, setUsers] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
