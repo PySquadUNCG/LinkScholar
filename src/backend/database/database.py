@@ -103,9 +103,11 @@ def change_password(email, new_password):
 def compare_password(email, user_pass):
     users = get_user_by_email(email)
     if users.count() == 1:
-        return bcrypt.checkpw(user_pass.encode('utf-8'), users[0].user_pass.encode('utf-8'))
-    else:
-        raise Exception("No unique user found")
+        user = users[0]
+        if bcrypt.checkpw(user_pass.encode('utf-8'), user.user_pass.encode('utf-8')):
+            return user.school_id
+        else:
+            raise Exception("No unique user found")
 
 
 def create_field_of_study(id, name):
