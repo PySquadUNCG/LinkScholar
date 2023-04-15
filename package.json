@@ -2,6 +2,7 @@
   "name": "linkscholar",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:5000",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -13,13 +14,24 @@
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@next/font": "13.1.5",
+    "axios": "^1.3.4",
     "eslint": "8.32.0",
     "eslint-config-next": "13.1.5",
     "express": "^4.18.2",
     "framer-motion": "^8.5.2",
+    "fs": "^0.0.1-security",
     "mongodb": "^5.0.0",
     "next": "13.1.5",
+    "python-shell": "^5.0.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "styled-components": "^5.3.9"
+  },
+  "browser": {
+    "fs": false,
+    "net": false,
+    "child_process": false,
+    "os": false,
+    "path": false
   }
 }
