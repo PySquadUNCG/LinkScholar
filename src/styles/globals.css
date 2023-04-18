@@ -442,6 +442,10 @@ float: center;
   opacity: 100%;
   
 }
+.no-matches-yet{
+  color:#fdba13;
+  font-size: 2rem;
+}
 .request-tojoin-match{
   float: right;
   width: 3rem;
