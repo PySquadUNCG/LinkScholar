@@ -442,10 +442,6 @@ float: center;
   opacity: 100%;
   
 }
-.no-matches-yet{
-  color:#fdba13;
-  font-size: 2rem;
-}
 .request-tojoin-match{
   float: right;
   width: 3rem;
@@ -634,9 +630,10 @@ a.student-avatar-link {
 
 .json {
   background-color: #bec0c2;
+  background-size: cover;
   color: #332e2e;
   font-family: "Lucida Sans";
-  height: 1080px;
+  
 }
 
 #header{
@@ -720,5 +717,14 @@ a.student-avatar-link {
   position: absolute;
   top: 30%;
   left: 10%;
+}
+
+.connect_label{
+  width: 20vw;
+  margin:10px;
+}
+.connect_checkbox{
+  width: 15px;
+  height: 15px;
 }
 

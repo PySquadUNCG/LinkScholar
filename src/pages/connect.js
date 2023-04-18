@@ -14,74 +14,149 @@ const ConnectPage = () => {
                     href='https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap'
                     rel='stylesheet'
                 />
+               <meta name = "viewport" content="height=device-height, initial-scale=1.0"/>
             </Head>
 
             <div className='json'>
                 <body>
                 <header id='header'>
-                   <Link href='/profile'> <a  className='header_link'>
+                   <Link href='/profile' className='header_link'>
                         Profile
-                    </a></Link>
-                    <Link href='/connect'><a className='header_link'>
+                    </Link>
+                    <Link href='/connect' className='header_link'>
                         Connect
-                    </a></Link>
+                    </Link>
                     <img class = 'logo' src="/LinkScholar.png" alt="My Image" />
-                   <Link href='/settings'> <a className='header_link'>
+                   <Link href='/settings'className='header_link'>
                         Settings
-                    </a></Link>
-                    <Link href='/login'><a className='header_link' id='signout'>
+                    </Link>
+                    <Link href='/login' class_name = 'header_link' id='signout'>
                         Sign Out
-                    </a></Link>
+                    </Link>
                 </header>
 
-                <h1 id='heading'>Connect</h1>
+                <h1 id='heading'>Select Field(s) of Study</h1>
+                <br />
+                <br />
                 <div className='lone_display_group'>
-                    <label>Select An Interest Area</label>
-                    <select>
-                        <option>Option 1</option>
-                        <option>Option 2</option>
-                        <option>Option 3</option>
-                    </select>
+                  
 
                     <br />
-                    <label>Select Parameter(s)</label>
+                    <label></label>
                     <br />
                     <form>
-                        <label>
-                            Parameter 1
-                            <input type='checkbox' />
+                        <label className='connect_label'>
+                            Cyber-security
+                            <input className ='connect_checkbox' type='checkbox' />
                         </label>
-                        <label>
-                            Parameter 2
-                            <input type='checkbox' />
+                        <label className='connect_label'>
+                            Information Retrieval
+                            <input className = 'connect_checkbox'type='checkbox' />
                         </label>
-                        <label>
-                            Parameter 3
-                            <input type='checkbox' />
+                        <label className='connect_label'>
+                            Computer Vision
+                            <input className = 'connect_checkbox' type='checkbox' />
                         </label>
-                        <br />
-                        <label>
-                            Parameter 4
-                            <input type='checkbox' />
+                        <label className='connect_label'>
+                            Data Structures
+                            <input className= 'connect_checkbox'type='checkbox' />
                         </label>
-                        <br />
+                        <label className='connect_label'>
+                            Differential Privacy
+                            <input className= 'connect_checkbox' type='checkbox' />
+                        </label>
+                        <label className= 'connect_label'>
+                            Databases
+                            <input className = 'connect_checkbox'type='checkbox' />
+                        </label>
+                        <label className='connect_label'>
+                            Algorithms
+                            <input className = 'connect_checkbox' type='checkbox' />
+                        </label>
+                        <label className='connect_label'>
+                            Virtual Reality
+                            <input className='connect_checkbox'type='checkbox' />
+                        </label>
+                        <label className='connect_label'>
+                            
+                            Image Processing
+                            <input className ='connect_checkbox' type='checkbox' />
+                        </label>
+                        <label className='connect_label'>
+                            Big Data Privacy and Security
+                            <input className ='connect_checkbox'type='checkbox' />
+                        </label>
+                        <label className='connect_label'>
+                            Artificial Intelligence
+                            <input className='connect_checkbox' type='checkbox' />
+                        </label>
+                        <label className='connect_label'>
+                            Augmented Reality
+                            <input className = 'connect_checkbox' type='checkbox' />
+                        </label>
+                    
+                        <label className='connect_label'>
+                            Information Retrieval
+                            <input className='connect_checkbox'type='checkbox' />
+                        </label>
+                        <label className = 'connect_label'>
+                            Machine learning
+                            <input className='connect_checkbox' type='checkbox' />
+                        </label>
+                        <label className='connect_label'>
+                            Natural Language Processing
+                            <input className='connect_checkbox'type='checkbox' />
+                        </label>
+                        <label className='connect_label'>
+                            Human Computer Interaction
+                            <input className ='connect_checkbox'type='checkbox' />
+                        </label>
+                        <label className='connect_label'>
+                            Cryptography
+                            <input className='connect_checkbox' type='checkbox' />
+                        </label>
+                        <label className='connect_label'>
+                            Stochastic Optimization
+                            <input className='connect_checkbox' type='checkbox' />
+                        </label>
+                        <label className='connect_label'>
+                            Graph Convolutional Network and Federated Learning
+                            <input className='connect_checkbox' type='checkbox' />
+                        </label>
+                        <label className='connect_label'>
+                            Data Mining
+                            <input className='connect_checkbox' type='checkbox' />
+                        </label>
+                        <label className='connect_label'>
+                            Network Security
+                            <input className='connect_checkbox'type='checkbox' />
+                        </label>
+                        <label className='connect_label'>
+                            Computer Security
+                            <input className ='connect_checkbox' type='checkbox' />
+                        </label>
 
-                        <button>Submit</button>
+
+                        <button>Connect</button>
+                        <br />
+                        <br />
+                        <br />
+                        <br />
                     </form>
                 </div>
                <Link href='/homepage'>
                     <button id='to_home'>Back </button>
                 </Link>
                 <footer id='footer'>
-                   <Link href='/about'> <a className='footer_link'>
+                   <Link href='/about' className='footer_link'>
                         About |
-                    </a></Link>
-                    <Link href='/support' ><a className='footer_link'>
+                    </Link>
+                    <Link href='/support' className='footer_link'>
                         Support |
-                    </a></Link>
-                   <Link href='/forgotusrname'> <a className='footer_link'>
+                    </Link>
+                   <Link href='/forgotusrname' className='footer_link'>
                         Forgot Username/Password
-                    </a></Link>
+                    </Link>
                 </footer>
                 </body>
             </div>
