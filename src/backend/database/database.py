@@ -103,9 +103,11 @@ def change_password(email, new_password):
 def compare_password(email, user_pass):
     users = get_user_by_email(email)
     if users.count() == 1:
-        return bcrypt.checkpw(user_pass.encode('utf-8'), users[0].user_pass.encode('utf-8'))
-    else:
-        raise Exception("No unique user found")
+        user = users[0]
+        if bcrypt.checkpw(user_pass.encode('utf-8'), user.user_pass.encode('utf-8')):
+            return user.school_id
+        else:
+            raise Exception("No unique user found")
 
 
 def create_field_of_study(id, name):
@@ -198,6 +200,24 @@ def get_match_id(school_id):
     for user in q_set:
         match_ids += user.match_id
     return json.dumps(match_ids)
+
+
+def get_id(school_id):
+    user = User.objects.get(school_id=school_id)
+    return json.dumps(str(user.id))
+
+
+def get_teacher_information(school_id):
+    teacher = User.objects(school_id=school_id).only('first_name', 'last_name', 'email').first()
+    if teacher:
+        teacher_info = {
+            'first_name': teacher.first_name,
+            'last_name': teacher.last_name,
+            'email': teacher.email
+        }
+        return json.dumps(teacher_info)
+    else:
+        return None
 
 
 if get_all_fields_of_study().count() == 0:

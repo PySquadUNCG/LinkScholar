@@ -47,3 +47,7 @@ from compatibility import*
 
 #
 # print(get_match_id("888319834"))
+
+# print(get_id('123456789'))
+
+print(get_teacher_information("123456789"))
