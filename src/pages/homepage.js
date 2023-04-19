@@ -12,7 +12,7 @@ import LinkScholarAPI from '../backend/api/API';
 
 const HomePage = () => {
     const router = useRouter();
-    const {email} = router.query;
+    const {email,school_id} = router.query;
     const [users, setUsers] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
 
@@ -88,7 +88,7 @@ const HomePage = () => {
 <div className='home-boxes'>
 <div className = "heading2">Welcome {email}!</div>
 <div className='match-box'>
-    <MatchFeed email = {email}/>
+    <MatchFeed email = {email} school_id = {school_id}/>
   
    
 </div>
