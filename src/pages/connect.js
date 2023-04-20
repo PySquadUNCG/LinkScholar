@@ -1,167 +1,155 @@
-import React from 'react';
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
-import Head from 'next/head';
-import styled from 'styled-components';
-import Image from 'next/image';
+import React, { useState } from "react";
+import Head from "next/head";
+import { useRouter } from "next/router";
+import LinkScholarAPI from "../backend/api/API";
+
+const topics = [
+  "Algorithms and Theory of Computing",
+  "Data Science and Machine Learning",
+  "Database Systems",
+  "Extended Reality",
+  "Image Processing",
+  "Networking",
+  "Online Social Networks",
+  "Security and Cryptography",
+  "Artificial Intelligence",
+];
+
+const topicMap = {};
+topics.forEach((topic, index) => {
+  topicMap[topic] = index;
+});
 
 const ConnectPage = () => {
-    return (
-        <>
-            <Head>
-                <title>Connect</title>
-                <link
-                    href='https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap'
-                    rel='stylesheet'
+  const [fos_id, setfos_id] = useState([]);
+  const router = useRouter();
+  const { school_id, email } = router.query;
+
+  const handleTopicChange = (event) => {
+    const topic = event.target.value;
+    const checked = event.target.checked;
+
+    if (checked) {
+      if (fos_id.length < 3) {
+        setfos_id([...fos_id, topicMap[topic]]);
+      }
+    } else {
+      setfos_id(fos_id.filter((t) => t !== topicMap[topic]));
+    }
+  };
+
+  const backHome = async () => {
+    router.push({
+      pathname: "/homepage",
+      query: { school_id: school_id, email: email },
+    });
+  };
+
+  const handleConnectClick = async () => {
+    if (fos_id.length > 0) {
+      const field_id = fos_id.slice(0, 3); // Select the maximum of 3 chosen topics
+
+      // Send each topic integer back in the API one by one
+      for (let i = 0; i < field_id.length; i++) {
+        const { response, loaded } = await LinkScholarAPI(
+          "/api/post/user/",
+          "userTags",
+          { school_id: school_id, field_id: field_id[i] },
+          "POST"
+        );
+        // handle the response here
+      }
+    }
+  };
+
+  return (
+    <>
+      <Head>
+        <title>Connect</title>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+          rel="stylesheet"
+        />
+        <meta
+          name="viewport"
+          content="height=device-height, initial-scale=1.0"
+        />
+      </Head>
+
+      <div className="connect-body">
+        <header id="header">
+          <a href="/profile" className="header_link">
+            Profile
+          </a>
+          <a href="/connect" className="header_link">
+            Connect
+          </a>
+          <img class="logo" src="/LinkScholar.png" alt="My Image" />
+          <a href="/settings" className="header_link">
+            Settings
+          </a>
+          <a href="/login" class_name="header_link" id="signout">
+            Sign Out
+          </a>
+        </header>
+        <div className="json" style={{ backgroundColor: "#f5f5f5" }}>
+          <h1 id="heading">Select Field(s) of Study</h1>
+          <br />
+          <br />
+          <div className="select-fields-box">
+            {topics.map((topic) => (
+              <div key={topic}>
+                <input
+                  type="checkbox"
+                  id={topic}
+                  name={topic}
+                  value={topic}
+                  onChange={handleTopicChange}
+                  checked={fos_id.includes(topicMap[topic])}
+                  disabled={
+                    fos_id.length >= 3 && !fos_id.includes(topicMap[topic])
+                  }
                 />
-               <meta name = "viewport" content="height=device-height, initial-scale=1.0"/>
-            </Head>
 
-            <div className='json'>
-                <body>
-                <header id='header'>
-                   <Link href='/profile' className='header_link'>
-                        Profile
-                    </Link>
-                    <Link href='/connect' className='header_link'>
-                        Connect
-                    </Link>
-                    <img class = 'logo' src="/LinkScholar.png" alt="My Image" />
-                   <Link href='/settings'className='header_link'>
-                        Settings
-                    </Link>
-                    <Link href='/login' class_name = 'header_link' id='signout'>
-                        Sign Out
-                    </Link>
-                </header>
+                <label htmlFor={topic}>{topic}</label>
+              </div>
+            ))}
+          </div>
+          <div className="selected-topics-box">
+            <p>Selected Topics:</p>
+            <ul>
+              {fos_id.map((topic) => (
+                <li key={topic}>{topic}</li>
+              ))}
+            </ul>
+            <button className="connect-button" onClick={handleConnectClick}>
+              Connect
+            </button>
+          </div>
 
-                <h1 id='heading'>Select Field(s) of Study</h1>
-                <br />
-                <br />
-                <div className='lone_display_group'>
-                  
+          <br />
+          <br />
+          <br />
+          <br />
 
-                    <br />
-                    <label></label>
-                    <br />
-                    <form>
-                        <label className='connect_label'>
-                            Cyber-security
-                            <input className ='connect_checkbox' type='checkbox' />
-                        </label>
-                        <label className='connect_label'>
-                            Information Retrieval
-                            <input className = 'connect_checkbox'type='checkbox' />
-                        </label>
-                        <label className='connect_label'>
-                            Computer Vision
-                            <input className = 'connect_checkbox' type='checkbox' />
-                        </label>
-                        <label className='connect_label'>
-                            Data Structures
-                            <input className= 'connect_checkbox'type='checkbox' />
-                        </label>
-                        <label className='connect_label'>
-                            Differential Privacy
-                            <input className= 'connect_checkbox' type='checkbox' />
-                        </label>
-                        <label className= 'connect_label'>
-                            Databases
-                            <input className = 'connect_checkbox'type='checkbox' />
-                        </label>
-                        <label className='connect_label'>
-                            Algorithms
-                            <input className = 'connect_checkbox' type='checkbox' />
-                        </label>
-                        <label className='connect_label'>
-                            Virtual Reality
-                            <input className='connect_checkbox'type='checkbox' />
-                        </label>
-                        <label className='connect_label'>
-                            
-                            Image Processing
-                            <input className ='connect_checkbox' type='checkbox' />
-                        </label>
-                        <label className='connect_label'>
-                            Big Data Privacy and Security
-                            <input className ='connect_checkbox'type='checkbox' />
-                        </label>
-                        <label className='connect_label'>
-                            Artificial Intelligence
-                            <input className='connect_checkbox' type='checkbox' />
-                        </label>
-                        <label className='connect_label'>
-                            Augmented Reality
-                            <input className = 'connect_checkbox' type='checkbox' />
-                        </label>
-                    
-                        <label className='connect_label'>
-                            Information Retrieval
-                            <input className='connect_checkbox'type='checkbox' />
-                        </label>
-                        <label className = 'connect_label'>
-                            Machine learning
-                            <input className='connect_checkbox' type='checkbox' />
-                        </label>
-                        <label className='connect_label'>
-                            Natural Language Processing
-                            <input className='connect_checkbox'type='checkbox' />
-                        </label>
-                        <label className='connect_label'>
-                            Human Computer Interaction
-                            <input className ='connect_checkbox'type='checkbox' />
-                        </label>
-                        <label className='connect_label'>
-                            Cryptography
-                            <input className='connect_checkbox' type='checkbox' />
-                        </label>
-                        <label className='connect_label'>
-                            Stochastic Optimization
-                            <input className='connect_checkbox' type='checkbox' />
-                        </label>
-                        <label className='connect_label'>
-                            Graph Convolutional Network and Federated Learning
-                            <input className='connect_checkbox' type='checkbox' />
-                        </label>
-                        <label className='connect_label'>
-                            Data Mining
-                            <input className='connect_checkbox' type='checkbox' />
-                        </label>
-                        <label className='connect_label'>
-                            Network Security
-                            <input className='connect_checkbox'type='checkbox' />
-                        </label>
-                        <label className='connect_label'>
-                            Computer Security
-                            <input className ='connect_checkbox' type='checkbox' />
-                        </label>
-
-
-                        <button>Connect</button>
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                    </form>
-                </div>
-               <Link href='/homepage'>
-                    <button id='to_home'>Back </button>
-                </Link>
-                <footer id='footer'>
-                   <Link href='/about' className='footer_link'>
-                        About |
-                    </Link>
-                    <Link href='/support' className='footer_link'>
-                        Support |
-                    </Link>
-                   <Link href='/forgotusrname' className='footer_link'>
-                        Forgot Username/Password
-                    </Link>
-                </footer>
-                </body>
-            </div>
-        </>
-    );
+          <button id="to_home" onClick={backHome}>
+            Back{" "}
+          </button>
+        </div>
+        <footer id="footer">
+          <a href="/about" className="footer_link">
+            About |
+          </a>
+          <a href="/support" className="footer_link">
+            Support |
+          </a>
+          <a href="/forgotusrname" className="footer_link">
+            Forgot Username/Password
+          </a>
+        </footer>
+      </div>
+    </>
+  );
 };
 
 export default ConnectPage;

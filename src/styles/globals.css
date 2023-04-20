@@ -8,7 +8,14 @@ body{
   background-color: inherit;
   margin: 0;
   padding: 0;
-  height: 1080px;
+  
+}
+html, body {
+  height: 100%;
+}
+
+.parent-container {
+  height: 100%;
 }
 /* Scroll bar stylings */
 ::-webkit-scrollbar {
@@ -633,7 +640,7 @@ a.student-avatar-link {
   background-size: cover;
   color: #332e2e;
   font-family: "Lucida Sans";
-  
+  height: 100%; /* Make sure the grey background covers the entire parent container */
 }
 
 #header{
@@ -718,13 +725,34 @@ a.student-avatar-link {
   top: 30%;
   left: 10%;
 }
-
-.connect_label{
-  width: 20vw;
-  margin:10px;
-}
-.connect_checkbox{
-  width: 15px;
-  height: 15px;
+.connect_checkbox {
+  display: none;
 }
 
+.connect_label {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  align-items: center;
+  font-size: small;
+  margin: 20px;
+}
+.label-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 20px;
+  background-color: #bec0c2;
+  
+}
+.connect-body{
+  background-color: #bec0c2;
+  height: 80rem;
+}
+.select-fields-box{
+  position: absolute;
+  margin-top: 30%;
+}
+.selected-topics-box{
+  position: absolute;
+  margin-top: 50%;
+}
