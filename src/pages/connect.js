@@ -52,7 +52,7 @@ const ConnectPage = () => {
       // Send each topic integer back in the API one by one
       for (let i = 0; i < field_id.length; i++) {
         const { response, loaded } = await LinkScholarAPI(
-          "/api/post/user/",
+          "/api/post/tags/",
           "userTags",
           { school_id: school_id, field_id: field_id[i] },
           "POST"
