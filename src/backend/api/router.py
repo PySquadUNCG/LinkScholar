@@ -117,7 +117,7 @@ def getReqFieldOfStudy(field):
         return createResponse(content=jsonify({"Error": str(e) + "."}), status=400)
     
 #Create/Update    
-@app.route("/api/post/user/<string:field>", methods=['POST', 'OPTIONS'])
+@app.route("/api/post/tags/<string:field>", methods=['POST', 'OPTIONS'])
 def postReqTags(field):
     field.replace("/", "").strip()
 
@@ -175,8 +175,8 @@ def postReqUser(field):
             return createResponse(content=jsonify({"Status": "Success"}), status=200, corsHeaders="POST,OPTIONS")
         except TypeError:
             return createResponse(content=jsonify({"Error": "The requested data could not be fetched due to a type mismatch."}), status=500)
-        except KeyError:
-            return createResponse(content=jsonify({"Error": "The keys for the requested operation do not match with required keys.", "Keys": data}), status=400)
+        except KeyError as e:
+            return createResponse(content=jsonify({"Error": "The keys for the requested operation do not match with required keys. " + str(e) + ".", "Keys": data}), status=400)
         except Exception as e:
             return createResponse(content=jsonify({"Error": str(e) + "."}), status=400)
 
