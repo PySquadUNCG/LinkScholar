@@ -239,7 +239,7 @@ def postReqMatch(field):
             return createResponse(content=jsonify({"Error": str(e) + "."}), status=400)
         
 @app.route("/api/get/match/<string:field>", methods=['GET'])
-def getReqUser(field):
+def getReqMatchUser(field):
     field.replace("/", "").strip()
 
     getReqRouter = {
