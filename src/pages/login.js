@@ -11,7 +11,7 @@ const LogInPage = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
-
+    
   });
   const [formFilled, setFormFilled] = useState(false);
 
@@ -30,10 +30,13 @@ const LogInPage = () => {
     const { response, loaded } = await LinkScholarAPI("/api/post/account/", "login", { email: formData.email, password: formData.password }, "POST");
     console.log(response);
 
-    if (response["Data"] === true) {
+    if (response["Status"] === "Success") {
       console.log('Form submitted:', formData);
       event.preventDefault();
-      router.push("/homepage");
+      router.push({
+        pathname: "/homepage",
+      query: {email: formData.email, school_id: response["Data"]},
+    });
     } else {
       alert("Id/Password is Incorrect, Try Again!");
     }

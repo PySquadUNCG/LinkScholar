@@ -8,7 +8,14 @@ body{
   background-color: inherit;
   margin: 0;
   padding: 0;
-  height: 1080px;
+  
+}
+html, body {
+  height: 100%;
+}
+
+.parent-container {
+  height: 100%;
 }
 /* Scroll bar stylings */
 ::-webkit-scrollbar {
@@ -27,6 +34,7 @@ body{
 ::-webkit-scrollbar-thumb {
   background: #ffb71b;
   border-radius: 12px;
+  transition: .2s;
 }
 
 /* Handle on hover */
@@ -199,6 +207,7 @@ form input {
   background-color: #a00c30;
   color: white;
   font-size: 1rem;
+  transition: .2s
 }
 .submit-2:hover {
   width: 320px;
@@ -252,6 +261,7 @@ p {
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
+  transition: .2s;
 }
 
 /* Change the color of links on hover */
@@ -265,13 +275,372 @@ p {
   background-color: #ffb71b;
   color: white;
 }
+.topnav2 {
+  background-color: #083456;
+  overflow: hidden;
+}
+/* homepage css -Jordan*/
+.topnav2 a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 1% 1.9%;
+  text-decoration: none;
+  font-size: 100%;
+  margin-top: 2%;
+  transition: .2s;
+}
 
+/* Topnav Change the color of links on hover */
+.topnav2 a:hover {
+  background-color: #ffb71b;
+  color: black;
+}
+
+/* Topnav Add a color to the active/current link */
+.topnav2 a.active {
+  background-color: #ffb71b;
+  color: white;
+}
+/* Style the search box inside the navigation bar */
+.topnav2 input[type=text] {
+  float: right;
+  padding: .3%;
+  border: none;
+  margin-top: -.8%;
+  /* margin-top: 43px; */
+  margin-bottom: 2%;
+  margin-right: 10%;
+  font-size: 100%;
+
+}
+
+/* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
+/* @media screen and (max-width: 1220px) {
+  .topnav2 a, .topnav2 input[type=text] {
+    float: center;
+    display: block;
+    text-align: left;
+    width: 125px;
+    margin: 0;
+    padding: 14px;
+  }
+  .topnav2 input[type=text] {
+    border: 1px solid #ccc;
+  }
+  .student-avatar {
+    width: 100px;
+    height: 100px;
+    margin-left: 5%;
+    float: left;
+    position: relative;
+
+    text-align: left;
+  }
+  .logo2{
+    width: 100px;
+    margin-top: 51px;
+    margin-left: -473px;
+    /* top: 25%; */
+    /* text-align: left; */
+   /* margin-bottom: -28px;
+  }
+  .student-avatar {
+    width: 10%;
+    height: 3%;
+    margin-left: 5%;
+    float: center;
+    position: relative;
+    top: 25%;
+    text-align: left;
+  }
+  .nav-input-search{
+    float: right;
+      /* margin-left: -29px; */
+     /* margin-right: -0px;
+      background-color: #ffb71b;
+      width: 75px;
+      height: 25px;
+      margin-top: -16px;
+  }
+  .nav-search{
+    margin-left: 20px;
+    margin-right: 40px;
+  }
+} */
+.logo2{
+  width: 10%;
+  margin-top: 4%;
+  margin-left: -41%;
+  /* top: 25%; */
+  /* text-align: left; */
+  margin-bottom: -2.7%;
+}
+.student-avatar {
+  width: 10%;
+  height: 3%;
+  margin-left: 5%;
+  float: center;
+  position: relative;
+  top: 25%;
+  text-align: left;
+}
+.heading2{
+
+margin-right: 0px;
+font-weight: 400;
+font-size: 150%;
+margin-left: 40%;
+margin-top: 2% ;
+margin-bottom: -2%;
+float: center;
+}
+.feed-box{
+  width: 25%;
+    height: 45rem;
+    margin-right: 30%;
+    margin-left: 38.8%;
+    margin-top: 3%;
+    background-color: #555054;
+    opacity: 80%;
+    float: center;
+    transition: .2s;
+    border-radius: 1rem;
+}
+.feed-box:hover{
+  width: 26%;
+    height: 46rem;
+    margin-right: 30%;
+    margin-left: 38.8%;
+    margin-top: 3%;
+    background-color: #555054;
+    opacity: 100%;
+    float: center;
+    border-radius: 2rem;
+    border-width: 3%;
+    border-color: #263149;
+    border-style: solid;
+   
+}
+.match-box{
+  width: 35%;
+  height: 35rem; 
+  margin-left: 2%;
+  margin-top: 0px;
+  background-color: #263149;
+
+  float: left;
+  border-radius: 2%;
+  opacity: 80%;
+  transition: .2s;
+}
+.match-box:hover{
+  width: 36%;
+  height: 37rem; 
+  margin-left: 1.8%;
+  margin-top: 0px;
+  background-color: #263149;
+
+  float: left;
+  border-radius:2%;
+  border-width: 3%;
+  border-color: #555054;
+  border-style: solid;
+  opacity: 100%;
+  
+}
+.request-tojoin-match{
+  float: right;
+  width: 3rem;
+  height: 2rem;
+  font-size: 50%;
+  margin-top: -9.9%;
+  margin-right: 3%;
+  background-color: #0f2044;
+  color: #fdba13;
+  transition: .2s;
+}
+.request-tojoin-match:hover{
+  float: right;
+  width: 3rem;
+  height: 2rem;
+  scale: 110%;
+  font-size: 50%;
+  margin-top: -9.9%;
+  margin-right: 3%;
+  opacity: 100%;
+  background-color: #0f2044;
+  color: #fdba13;
+}
+.profile-box{
+  opacity: 40%;
+}
+a.student-avatar-link {
+  padding: 0px 0px;
+  margin: 0;
+  scale: 65%;
+  width: 45%;
+}
+
+.match-input{
+  width: 70%;
+  height:  1.3rem;
+  margin-left: 10%;
+  margin-top: -20%;
+  font-size: 1rem;
+  margin-bottom: 3%;
+  margin-right: 4%;
+
+}
+.feed-input{
+  width: 85%;
+  height:  1.3rem;
+  margin-left: 7%;
+  margin-top: 10%;
+  font-size: 1rem;
+  margin-bottom: 3%;
+  margin-right: 4%;
+  text-align: left;
+  text-overflow: clip;
+}
+.feed-input::placeholder{
+  text-align: center;
+}
+.post-author{
+  margin-left: 3%;
+  color: black
+}
+.post-feed{
+  color: black;
+  margin-top: -1%;
+}
+.nav-input-search{
+  float: right;
+    /* margin-left: -29px; */
+    margin-right: -20%;
+    background-color: #ffb71b;
+    width: 5%;
+    height: 1.5rem;
+    margin-top: -.7%;
+}
+.nav-search{
+  margin-left: 0%;
+  margin-right: 20%;
+}
+/*end homepage css*/
+/* component css*/ 
+.post-button{
+  float: left;
+}
+.post-image{
+  float: left;
+  width: 9%;
+  margin-left: 3%;
+
+}
+.post-box{
+  background-color: white;
+  border-radius: 1rem;
+  transition: .2s;
+  scale: 95%;
+
+}
+.post-box:hover{
+  border-color: black;
+  border-radius: .5rem;
+  scale: 115%;
+  background-color: whitesmoke;
+  opacity: 80%;
+}
+.post-share-button{
+  float: right;
+  margin-right: 10%;
+  margin-top: 1%;
+  scale: 120%;
+  background-color: rgb(207, 201, 201);
+  justify-content: right;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+  font-size: .7rem;
+  font-weight: 600;
+  transition: .2s;
+}
+.post-share-button:hover{
+  float: right;
+  margin-right: 10%;
+  margin-top: 1%;
+  scale: 130%;
+  background-color: #a00c30;
+  justify-content: right;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+ 
+  font-weight: 600;
+}
+.match-image{
+  float: left;
+  width: 5%;
+  margin-left: 3%;
+  margin-right: 2%;
+
+}
+.match-post-box{
+  background-color: white;
+  border-radius: 1rem;
+  width: 95%;
+  margin-left: 2%;
+  transition: .2s;
+}
+.match-post-box:hover{
+  border-color: black;
+  border-radius: 1.5rem;
+  scale: 115%;
+  background-color: whitesmoke;
+  opacity: 80%;
+}
+.match-refresh{
+  margin-left: 3%;
+  margin-top: -2%;
+  scale: 130%;
+  background-color: #fdba13;
+  transition: .2s;
+}
+.match-refresh:hover{
+  margin-left: 3%;
+  margin-top: -2%;
+  scale: 130%;
+  background-color: #a00c30;
+}
+
+  
+.match-input-search{
+  background-color: #ffb71b;
+  margin-left: -2%;
+  margin-top: -.3%;
+  transition: .2s;
+}
+.match-input-search:hover{
+  background-color: #a00c30;
+  margin-left: -2%;
+  margin-top: -.3%;
+}
+.your-matches{
+  font-weight: 400;
+  color: #ffb71b;
+  margin-top: -1%;
+  font-size: 1.5rem;
+}
+/* end component css*/
 /*Jason CSS*/ 
 
 .json {
   background-color: #bec0c2;
+  background-size: cover;
   color: #332e2e;
   font-family: "Lucida Sans";
+  height: 100%; /* Make sure the grey background covers the entire parent container */
 }
 
 #header{
@@ -327,7 +696,6 @@ p {
 .logo{
   width: 20%;
   height : 50%;
-
   margin-left: 10%;
   position: relative;
   top: 25%;
@@ -357,4 +725,34 @@ p {
   top: 30%;
   left: 10%;
 }
+.connect_checkbox {
+  display: none;
+}
 
+.connect_label {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  align-items: center;
+  font-size: small;
+  margin: 20px;
+}
+.label-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 20px;
+  background-color: #bec0c2;
+  
+}
+.connect-body{
+  background-color: #bec0c2;
+  height: 80rem;
+}
+.select-fields-box{
+  position: absolute;
+  margin-top: 30%;
+}
+.selected-topics-box{
+  position: absolute;
+  margin-top: 50%;
+}

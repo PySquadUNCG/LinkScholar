@@ -118,6 +118,36 @@ def getReqFieldOfStudy(field):
     
 #Create/Update    
 @app.route("/api/post/user/<string:field>", methods=['POST', 'OPTIONS'])
+def postReqTags(field):
+    field.replace("/", "").strip()
+
+    postReqRouter = {
+        "userTags": update_user_fields_of_study
+    }
+
+    if(request.method == "OPTIONS"):
+        try:
+            return createResponse(content=jsonify({"Status": "Preflight Success"}), status=200, corsHeaders="POST,OPTIONS", preflight=True)
+        except:
+            return createResponse(content=jsonify({"Error": "Preflight request failed!"}), status=400)
+    else:
+        data = request.get_json()
+
+        try:
+            postReqRouter[field](
+                str(data['school_id']),
+                data['field_id']
+            )
+            return createResponse(content=jsonify({"Status": "Success"}), status=200, corsHeaders="POST,OPTIONS")
+        except TypeError:
+            return createResponse(content=jsonify({"Error": "The requested data could not be fetched due to a type mismatch."}), status=500)
+        except KeyError:
+            return createResponse(content=jsonify({"Error": "The keys for the requested operation do not match with required keys.", "Keys": data}), status=400)
+        except Exception as e:
+            return createResponse(content=jsonify({"Error": str(e) + "."}), status=400)
+        
+#Create/Update    
+@app.route("/api/post/user/<string:field>", methods=['POST', 'OPTIONS'])
 def postReqUser(field):
     field.replace("/", "").strip()
 
@@ -225,4 +255,19 @@ def getReqUser(field):
     except Exception as e:
         return createResponse(content=jsonify({"Error": str(e) + "."}), status=400)
 
+@app.route("/api/get/match/<string:field>", methods=['GET'])
+def getReqMatch(field):
+    field.replace("/", "").strip()
 
+    getReqRouter = {
+        "getUserMatch": compute_compatibility,
+    }
+
+    try:
+        return createResponse(content=getReqRouter[field](str(request.args.get('param', ''))).to_json(), status=200)
+    except TypeError:
+        return createResponse(content=jsonify({"Error": "The requested data could not be fetched due to a type mismatch."}), status=500)
+    except KeyError:
+        return createResponse(content=jsonify({"Error": "The keys for the requested operation do not match with required keys.", "Keys": request.args.to_dict()}), status=400)
+    except Exception as e:
+        return createResponse(content=jsonify({"Error": str(e) + "."}), status=400)

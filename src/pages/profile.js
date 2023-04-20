@@ -23,11 +23,11 @@ const ProfilePage = () => {
 <div className='json'>
 <body >
 <header id = "header">
-    <Link href = "/profile"> <a className="header_link">Profile</a></Link>
-    <Link href = "/connect"> <a className = "header_link">Connect</a></Link>
+    <Link href = "/profile" className="header_link">Profile</Link>
+    <Link href = "/connect" className = "header_link">Connect</Link>
     <img class = 'logo' src="/LinkScholar.png" alt="My Image" />
-    <Link href = "/setting"> <a className="header_link">Settings</a></Link>
-    <Link href = "/login"> <a className = "header_link" id = "signout">Sign Out</a></Link>
+    <Link href = "/settings" className="header_link">Settings</Link>
+    <Link href = "/login" className = "header_link" id = "signout">Sign Out</Link>
 </header>
 
 <h1 id = "heading">Profile</h1>
@@ -45,9 +45,9 @@ const ProfilePage = () => {
 </div>
 <Link href="/homepage"><button id = "to_home">Back </button></Link>
 <footer id = "footer">
-    <Link href = "/about"> <a className = "footer_link">About |</a></Link>
-    <Link href = "/support"> <a className="footer_link">Support |</a></Link>
-    <Link href = "/forgotusrname"> <a className="footer_link">Forgot Username/Password</a></Link>
+    <Link href = "/about" className = "footer_link">About |</Link>
+    <Link href = "/support" className="footer_link">Support |</Link>
+    <Link href = "/forgotusrname" className="footer_link">Forgot Username/Password</Link>
 
 </footer>
 </body>
