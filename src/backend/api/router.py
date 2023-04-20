@@ -135,7 +135,7 @@ def postReqTags(field):
 
         try:
             postReqRouter[field](
-                int(data['school_id']),
+                str(data['school_id']),
                 data['field_id']
             )
             return createResponse(content=jsonify({"Status": "Success"}), status=200, corsHeaders="POST,OPTIONS")
@@ -169,7 +169,7 @@ def postReqUser(field):
                 str(data['first_name']),
                 str(data['last_name']),
                 str(data['user_pass']),
-                int(data['school_id']),
+                str(data['school_id']),
                 str(data['email'])
             )
             return createResponse(content=jsonify({"Status": "Success"}), status=200, corsHeaders="POST,OPTIONS")
@@ -228,7 +228,7 @@ def postReqMatch(field):
 
         try:
             query = postReqRouter[field](
-                int(data['school_id'])
+                str(data['school_id'])
             )
             return createResponse(content=jsonify({"Status": "Success", "Data": query }), status=200, corsHeaders="POST,OPTIONS")
         except TypeError:
