@@ -264,7 +264,7 @@ def getReqMatch(field):
     }
 
     try:
-        return createResponse(content=getReqRouter[field](str(request.args.get('param', ''))).to_json(), status=200)
+        return createResponse(content=json.dumps(getReqRouter[field](str(request.args.get('param', '')))), status=200)
     except TypeError:
         return createResponse(content=jsonify({"Error": "The requested data could not be fetched due to a type mismatch."}), status=500)
     except KeyError:
