@@ -94,7 +94,8 @@ def get_user_by_school_id(school_id):
 def change_password(email, new_password):
     users = get_user_by_email(email)
     if users.count() == 1:
-        temp = str(bcrypt.hashpw(new_password.encode('utf-8'), bcrypt.gensalt()), 'utf-8')
+        temp = str(bcrypt.hashpw(new_password.encode(
+            'utf-8'), bcrypt.gensalt()), 'utf-8')
         users[0].update(user_pass=temp)
     else:
         raise Exception("No unique user found")
@@ -208,7 +209,8 @@ def get_id(school_id):
 
 
 def get_teacher_information(school_id):
-    teacher = User.objects(school_id=school_id).only('first_name', 'last_name', 'email').first()
+    teacher = User.objects(school_id=school_id).only(
+        'first_name', 'last_name', 'email').first()
     if teacher:
         teacher_info = {
             'first_name': teacher.first_name,
@@ -230,8 +232,3 @@ if get_all_fields_of_study().count() == 0:
     create_field_of_study(6, "Online Social Networks")
     create_field_of_study(7, "Security and Cryptography")
     create_field_of_study(8, "Artificial Intelligence")
-
-
-
-
-
