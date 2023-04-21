@@ -1,17 +1,15 @@
-import React, { useEffect, useState } from 'react'
-import Link from 'next/link';
-import Head from 'next/head';
-import LinkScholarAPI from '../backend/api/API';
-import { useRouter } from 'next/router'
-
+import React, { useEffect, useState } from "react";
+import Link from "next/link";
+import Head from "next/head";
+import LinkScholarAPI from "../backend/api/API";
+import { useRouter } from "next/router";
 
 const LogInPage = () => {
   const router = useRouter();
 
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-    
+    email: "",
+    password: "",
   });
   const [formFilled, setFormFilled] = useState(false);
 
@@ -24,19 +22,24 @@ const LogInPage = () => {
   };
 
   const handleSubmit = async (event) => {
-    console.log('Form submitted!');
+    console.log("Form submitted!");
     event.preventDefault();
 
-    const { response, loaded } = await LinkScholarAPI("/api/post/account/", "login", { email: formData.email, password: formData.password }, "POST");
+    const { response, loaded } = await LinkScholarAPI(
+      "/api/post/account/",
+      "login",
+      { email: formData.email, password: formData.password },
+      "POST"
+    );
     console.log(response);
 
     if (response["Status"] === "Success") {
-      console.log('Form submitted:', formData);
+      console.log("Form submitted:", formData);
       event.preventDefault();
       router.push({
         pathname: "/homepage",
-      query: {email: formData.email, school_id: response["Data"]},
-    });
+        query: { email: formData.email, school_id: response["Data"] },
+      });
     } else {
       alert("Id/Password is Incorrect, Try Again!");
     }
@@ -44,21 +47,15 @@ const LogInPage = () => {
 
   // Check if all form inputs have a value
   useEffect(() => {
-
-    const isFormFilled = Object.values(formData).every((value) => value !== '');
+    const isFormFilled = Object.values(formData).every((value) => value !== "");
     setFormFilled(isFormFilled);
-
-
   }, [formData]);
 
-
   return (
-
     <>
-      <div className='jb'>
-
+      <div className="jb">
         <div class="topnav">
-          <a class="active" >Login</a>
+          <a class="active">Login</a>
           <Link href="/signin">Sign Up</Link>
         </div>
 
@@ -66,28 +63,47 @@ const LogInPage = () => {
           <title>Linkscholar-Login</title>
         </Head>
 
-
         <div class="login-box">
-          <div class="icon"><img src="/LinkScholar.png" alt="My Image" /></div>
+          <div class="icon">
+            <img src="/LinkScholar.png" alt="My Image" />
+          </div>
           <form onSubmit={handleSubmit}>
             <label>Enter Email</label>
-            <input type="string" id="email" name="email" value={formData.email} onChange={handleInputChangelog} required />
+            <input
+              type="string"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleInputChangelog}
+              required
+            />
 
             <label>Password</label>
-            <input type="password" id="password" name="password" value={formData.password} onChange={handleInputChangelog} required />
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={formData.password}
+              onChange={handleInputChangelog}
+              required
+            />
 
-            <button className='submit' type="submit" disabled={!formFilled} > Login </button>
-
-
+            <button className="submit" type="submit" disabled={!formFilled}>
+              {" "}
+              Login{" "}
+            </button>
           </form>
-          <Link className="indent" href="/signin">Need An Account? Sign Up Here</Link> <br></br>
-          <Link className="indent-2" href="/forgotusrname">Forgot username or password?</Link>
-
+          <Link className="indent" href="/signin">
+            Need An Account? Sign Up Here
+          </Link>{" "}
+          <br></br>
+          <Link className="indent-2" href="/forgotusrname">
+            Forgot username or password?
+          </Link>
         </div>
       </div>
     </>
+  );
+};
 
-  )
-}
-
-export default LogInPage
+export default LogInPage;

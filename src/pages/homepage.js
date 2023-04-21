@@ -9,6 +9,7 @@ import Feed from "./componets/feed";
 import MatchFeed from "./componets/matchfeed";
 import { useRouter } from "next/router";
 import LinkScholarAPI from "../backend/api/API";
+import TopNav from "./componets/topnav";
 
 const HomePage = () => {
   const router = useRouter();
@@ -68,40 +69,7 @@ const HomePage = () => {
         />
       </Head>
       <div className="json">
-        <div className="topnav2">
-          <Link className="header_link2" href="/profile">
-            {" "}
-            Profile
-          </Link>
-          <Link className="header_link2" href="" onClick={goConnect}>
-            {" "}
-            Connect
-          </Link>
-          <img class="logo2" src="/LinkScholar.png" alt="My Image" />
-          <Link className="student-avatar-link" href="/profile">
-            <img className="student-avatar" src={Avatar.img} alt="Avatar" />
-          </Link>
-          <Link className="header_link2" href="/settings">
-            {" "}
-            Settings
-          </Link>
-          <Link className="header_link2" href="/login">
-            {" "}
-            Sign Out
-          </Link>
-          <div className="search-container">
-            <input
-              className="nav-search"
-              type="text"
-              value={searchQuery}
-              onChange={handleSearchInputChange}
-              placeholder="Search "
-            ></input>
-            <button className="nav-input-search" onClick={getMatches}>
-              Search
-            </button>
-          </div>
-        </div>
+        <TopNav email={email} school_id={school_id}></TopNav>
         <div className="home-boxes">
           <div className="heading2">Welcome {email}!</div>
           <div className="match-box">

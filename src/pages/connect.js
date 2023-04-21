@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import LinkScholarAPI from "../backend/api/API";
+import Link from "next/link";
+import TopNav from "./componets/topnav";
 
 const topics = [
   "Algorithms and Theory of Computing",
@@ -66,40 +68,19 @@ const ConnectPage = () => {
     <>
       <Head>
         <title>Connect</title>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
-          rel="stylesheet"
-        />
-        <meta
-          name="viewport"
-          content="height=device-height, initial-scale=1.0"
-        />
       </Head>
 
+      <TopNav email={email} school_id={school_id}></TopNav>
       <div className="connect-body">
-        <header id="header">
-          <a href="/profile" className="header_link">
-            Profile
-          </a>
-          <a href="/connect" className="header_link">
-            Connect
-          </a>
-          <img class="logo" src="/LinkScholar.png" alt="My Image" />
-          <a href="/settings" className="header_link">
-            Settings
-          </a>
-          <a href="/login" class_name="header_link" id="signout">
-            Sign Out
-          </a>
-        </header>
-        <div className="json" style={{ backgroundColor: "#f5f5f5" }}>
-          <h1 id="heading">Select Field(s) of Study</h1>
+        <div className="connect-subbody">
+          <h1 className="select-fields-study">Select Field(s) of Study</h1>
           <br />
           <br />
           <div className="select-fields-box">
             {topics.map((topic) => (
               <div key={topic}>
                 <input
+                  className="topic-labels"
                   type="checkbox"
                   id={topic}
                   name={topic}
@@ -116,10 +97,10 @@ const ConnectPage = () => {
             ))}
           </div>
           <div className="selected-topics-box">
-            <p>Selected Topics:</p>
+            <p className="selected-topics">Selected Topics:</p>
             <ul>
-              {fos_id.map((topic) => (
-                <li key={topic}>{topic}</li>
+              {fos_id.map((topicId) => (
+                <li key={topicId}>{topics[topicId]}</li>
               ))}
             </ul>
             <button className="connect-button" onClick={handleConnectClick}>
@@ -131,11 +112,10 @@ const ConnectPage = () => {
           <br />
           <br />
           <br />
-
-          <button id="to_home" onClick={backHome}>
-            Back{" "}
-          </button>
         </div>
+        <button id="to_home" onClick={backHome}>
+          Back{" "}
+        </button>
         <footer id="footer">
           <a href="/about" className="footer_link">
             About |
