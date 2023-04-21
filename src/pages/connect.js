@@ -61,6 +61,11 @@ const ConnectPage = () => {
         );
         // handle the response here
       }
+      alert("Your Connected!");
+      router.push({
+        pathname: "/homepage",
+        query: { school_id: school_id, email: email },
+      });
     }
   };
 
