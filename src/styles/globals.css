@@ -249,7 +249,7 @@ p {
 
 /* Add a black background color to the top navigation */
 .topnav {
-  background-color: #0f2044;
+  background-color: #083456;
   overflow: hidden;
 }
 
@@ -275,116 +275,9 @@ p {
   background-color: #ffb71b;
   color: white;
 }
-.topnav2 {
-  background-color: #083456;
-  overflow: hidden;
-}
+
 /* homepage css -Jordan*/
-.topnav2 a {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 1% 1.9%;
-  text-decoration: none;
-  font-size: 100%;
-  margin-top: 2%;
-  transition: .2s;
-}
 
-/* Topnav Change the color of links on hover */
-.topnav2 a:hover {
-  background-color: #ffb71b;
-  color: black;
-}
-
-/* Topnav Add a color to the active/current link */
-.topnav2 a.active {
-  background-color: #ffb71b;
-  color: white;
-}
-/* Style the search box inside the navigation bar */
-.topnav2 input[type=text] {
-  float: right;
-  padding: .3%;
-  border: none;
-  margin-top: -.8%;
-  /* margin-top: 43px; */
-  margin-bottom: 2%;
-  margin-right: 10%;
-  font-size: 100%;
-
-}
-
-/* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
-/* @media screen and (max-width: 1220px) {
-  .topnav2 a, .topnav2 input[type=text] {
-    float: center;
-    display: block;
-    text-align: left;
-    width: 125px;
-    margin: 0;
-    padding: 14px;
-  }
-  .topnav2 input[type=text] {
-    border: 1px solid #ccc;
-  }
-  .student-avatar {
-    width: 100px;
-    height: 100px;
-    margin-left: 5%;
-    float: left;
-    position: relative;
-
-    text-align: left;
-  }
-  .logo2{
-    width: 100px;
-    margin-top: 51px;
-    margin-left: -473px;
-    /* top: 25%; */
-    /* text-align: left; */
-   /* margin-bottom: -28px;
-  }
-  .student-avatar {
-    width: 10%;
-    height: 3%;
-    margin-left: 5%;
-    float: center;
-    position: relative;
-    top: 25%;
-    text-align: left;
-  }
-  .nav-input-search{
-    float: right;
-      /* margin-left: -29px; */
-     /* margin-right: -0px;
-      background-color: #ffb71b;
-      width: 75px;
-      height: 25px;
-      margin-top: -16px;
-  }
-  .nav-search{
-    margin-left: 20px;
-    margin-right: 40px;
-  }
-} */
-.logo2{
-  width: 10%;
-  margin-top: 4%;
-  margin-left: -41%;
-  /* top: 25%; */
-  /* text-align: left; */
-  margin-bottom: -2.7%;
-}
-.student-avatar {
-  width: 10%;
-  height: 3%;
-  margin-left: 5%;
-  float: center;
-  position: relative;
-  top: 25%;
-  text-align: left;
-}
 .heading2{
 
 margin-right: 0px;
@@ -477,9 +370,12 @@ float: center;
 }
 a.student-avatar-link {
   padding: 0px 0px;
-  margin: 0;
-  scale: 65%;
-  width: 45%;
+  margin-left: 30%;
+  height: 6rem;
+  width: 5%;
+}
+a.student-avatar-link:hover{
+  background-color: transparent;
 }
 
 .match-input{
@@ -632,6 +528,9 @@ a.student-avatar-link {
   margin-top: -1%;
   font-size: 1.5rem;
 }
+
+
+
 /* end component css*/
 /*Jason CSS*/ 
 
@@ -640,7 +539,7 @@ a.student-avatar-link {
   background-size: cover;
   color: #332e2e;
   font-family: "Lucida Sans";
-  height: 100%; /* Make sure the grey background covers the entire parent container */
+  height: 60rem; /* Make sure the grey background covers the entire parent container */
 }
 
 #header{
@@ -694,7 +593,7 @@ a.student-avatar-link {
 }
 
 .logo{
-  width: 20%;
+  width: 30%;
   height : 50%;
   margin-left: 10%;
   position: relative;
@@ -744,15 +643,207 @@ a.student-avatar-link {
   background-color: #bec0c2;
   
 }
-.connect-body{
+.connect-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: #bec0c2;
-  height: 80rem;
 }
-.select-fields-box{
-  position: absolute;
-  margin-top: 30%;
+
+.connect-subbody {
+  width: 100%;
+  max-width: co;
+  height: 50rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 0;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #bec0c2;
+  
 }
-.selected-topics-box{
-  position: absolute;
-  margin-top: 50%;
+
+.select-fields-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 10px;
+  background-color: #0f2044;
+  height: 32rem;
+  border-radius: 5%;
+  transition: .2s;
+}
+.select-fields-box:hover {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 10px;
+  background-color: #0f2044;
+  height: 32rem;
+  border-radius: 1%;
+
+}
+
+.selected-topics-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 10px;
+  background-color: #0f2044;
+  height: 32rem;
+  opacity: 80%;
+  transition: .2s;
+  border-radius: 5%;
+}
+.selected-topics-box:hover{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 10px;
+  background-color: #0f2044;
+  opacity: 100%;
+  height: 32rem;
+  border-radius: 1%;
+}
+.connect-button{
+
+}
+.select-fields-study {
+  margin-top: 10%;
+  color: #083456;
+  text-align: center;
+  margin-bottom: -20%
+}
+
+.select-fields-box label,
+.selected-topics-box ul {
+  margin: 0;
+  padding: 0;
+  font-size: 130%;
+  list-style: none;
+  color: #bec0c2;
+}
+.selected-topics{
+  color: #c5c29b;
+  font-size: 140%;
+  font-weight:800;
+}
+.select-fields-box label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.selected-topics-box p {
+  margin-bottom: 10px;
+}
+
+.selected-topics-box ul {
+  text-align: left;
+}
+
+.connect-button {
+  margin-top: 20px;
+  background-color: #fdba13;
+  width: 15%;
+  height: 2rem;
+  margin-left: 50%;
+  margin-top: 5%;
+}
+
+/*top nav css */ 
+.topnav2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0f2044;
+  padding: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.top-nav-link {
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin: 0 20px;
+  padding: 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+.top-nav-link:hover {
+  background-color: #fdba13;
+}
+
+.logo2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logoinner {
+  width: 100px;
+  height: auto;
+}
+
+.student-avatar-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.avatar {
+  width: 10%;
+  height: 3rem;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  transition: all 0.3s ease-in-out;
+}
+
+.student-avatar:hover {
+  border-color: #fdba13;
+}
+
+
+.avatar{
+  margin-top: -5%;
+  width: 20%;
+  float: center;
+}
+.link{
+  width: inherit;
+  height: inherit;
+  margin-left:3%;
+  margin-top: 1%;
+  float: inherit;
+  transition: background-color 0.3s ease;
+  
+}
+.link:hover{
+  background-color: #fdba13;
+}
+
+.link2{
+  margin-top: 1%;
+  width: 15%;
+  height: 2rem;
+  margin-left: 10%;
+}
+.logo-container{
+  width: 60%;
+}
+.logolink{
+  width: inherit;
+  height: inherit;
+  margin:inherit;
 }
